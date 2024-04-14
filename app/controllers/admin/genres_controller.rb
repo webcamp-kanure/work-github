@@ -1,15 +1,15 @@
-class Admin::CustomersController < ApplicationController
+class Admin::GenresController < ApplicationController
   
   def index
-  
+    
   end
   
-  def show
-  
+  def create
+    
   end
   
   def edit
-  
+    
   end
   
   def update
