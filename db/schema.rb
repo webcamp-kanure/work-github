@@ -39,9 +39,6 @@ ActiveRecord::Schema.define(version: 2024_04_15_072434) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
-=======
-ActiveRecord::Schema.define(version: 2024_04_14_055413) do
-
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
@@ -79,6 +76,7 @@ ActiveRecord::Schema.define(version: 2024_04_14_055413) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "is_active", default: true
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -99,7 +97,7 @@ ActiveRecord::Schema.define(version: 2024_04_14_055413) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "oder_details", force: :cascade do |t|
+  create_table "order_details", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "order_id", null: false
     t.integer "price", null: false
