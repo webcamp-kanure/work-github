@@ -9,77 +9,78 @@
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
       
-      
-      <body>
-        <header>
-          <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
-              <a class="navbar-brand" href="/"><%= image_tag "naganocafe.png" %></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
 
-          <!--adminヘッダー-->
-          <% if admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "商品一覧",admin_items_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to '会員一覧', admin_customers_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to '注文履歴一覧', admin_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_admin_session_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          
-          <!--customersヘッダー-->
-          <% elsif customer_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'マイページ', customers_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to '商品一覧', items_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to 'カート', cart_items_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_customer_session_path, class: 'nav-link text-dark' %>
-          </li>
-    
-    
-          <!--ログインしていない状態のヘッダー-->
-          <% else %>
-          <li class="nav-item">
-            <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to '商品一覧', items_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to 'ログイン', new_customer_session_path, class: 'nav-link text-dark' %>
-          </li>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/"><%= image_tag "naganocafe.png" %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-         <% end %>
-　　<%= yield %>
-   </body>
+      <!--adminヘッダー-->
+      <% if admin_signed_in? %>
+       <li class="nav-item">
+        <%= link_to "商品一覧",admin_items_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to '会員一覧', admin_customers_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to '注文履歴一覧', admin_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to 'ログアウト', destroy_admin_session_path, class: 'nav-link text-dark' %>
+       </li>
+
+
+       <!--customersヘッダー-->
+       <% elsif customer_signed_in? %>
+       <li class="nav-item">
+          <%= link_to 'マイページ', customers_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to '商品一覧', items_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to 'カート', cart_items_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to 'ログアウト', destroy_customer_session_path, class: 'nav-link text-dark' %>
+       </li>
+
+
+       <!--ログインしていない状態のヘッダー-->
+       <% elsif customer_signed_in? %>
+       <li class="nav-item">
+          <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to '商品一覧', items_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
+       </li>
+
+       <li class="nav-item">
+          <%= link_to 'ログイン', new_customer_session_path, class: 'nav-link text-dark' %>
+       </li>
+        <% end %>
+          
+    <%= yield %>
+  </body>
+
 </html>
