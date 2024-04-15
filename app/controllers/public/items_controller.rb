@@ -1,10 +1,10 @@
 class Public::ItemsController < ApplicationController
 
-  def inedx
+  def index
   end
-  
+
   def show
   end
-  
-  
+
+
 end
