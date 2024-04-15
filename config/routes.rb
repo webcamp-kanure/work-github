@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+
   scope module: :public do
     root to: "homes#top"
     get 'about' => 'homes#about'
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
   end
+  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
