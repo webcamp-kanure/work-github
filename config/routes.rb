@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  root to: "homes#top"
+  root to: "public/homes#top"
   get 'about' => 'homes#about'
   resources :items, only: [:index,:show]
   
