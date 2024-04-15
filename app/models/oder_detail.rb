@@ -1,2 +1,0 @@
-class OderDetail < ApplicationRecord
-end
