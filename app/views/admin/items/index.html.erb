@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <h2>商品一覧</h2>
+    </div>
+    
+   
+          <thead>
+            <tr>
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+            <th>ステータス</th>
+            </tr>
+          </thead>
+          <% @items.each do |item| %>
+            <tr>
+             <td><%= item.id %></td>
+             <td><%= item.name %></td>
+             <td><%= item.price %></td>
+             <td><%= item.genre %></td>
+             <td><%= item.status %></td>
+         　　</tr>
+    　　　　 <% end %>
+          
