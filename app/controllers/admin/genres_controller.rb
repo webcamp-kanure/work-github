@@ -1,20 +1,35 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
-    
+    @genres = Genre.all
+    @genre = Genre.new
   end
-  
+
   def create
-    
+    @genre = Genre.new(genre_params)
+    if @genre.save
+      flash[:notice] = "ジャンルを追加しました"
+    end
+    @genres = Genre.all
+    render :index
   end
-  
+
   def edit
-    
+    @genre = Genre.find(params[:id])
   end
-  
+
   def update
-    
+    genre = Genre.find(params[:id])
+    if genre.update(genre_params)
+      flash[:notice] = "ジャンル名を変更しました。"
+      @genres = Genre.all
+      @genre = Genre.new
+      render :index
+    else
+      @genre = Genre.find(params[:id])
+      render :edit
+    end
   end
-  
+
 end
