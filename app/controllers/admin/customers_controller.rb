@@ -17,11 +17,18 @@ class Admin::CustomersController < ApplicationController
     customer = Customer.find(params[:id])
     if customer.update(customer_params)
       flash[:notice] = "会員情報を変更しました。"
-      # 詳細ページへ移動するアクション
+      @customer = customer
+      render :show
     else
-      @item = item
+      @customer = customer
       render :edit
     end
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :postal_code, :address, :telephone_number)
   end
 
 end
