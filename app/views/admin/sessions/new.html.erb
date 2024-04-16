@@ -4,7 +4,7 @@
       <h2>管理者ログイン</h2>
     </div>
   </div>
-  
+
 
 　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="row">
@@ -21,10 +21,10 @@
         <%= f.label "パスワード" %>
       </div>
       <div class="col-sm-3 px-sm-0">
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :encrypted_password, autocomplete: "current-encrypted_password" %>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-sm-3 px-sm-0 offset-sm-4">
         <%= f.submit "ログイン", class:"btn btn-primary px-4 mt-3 mb-5" %>
@@ -32,4 +32,4 @@
     </div>
   <% end %>
 </div>
-    
+
