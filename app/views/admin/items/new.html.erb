@@ -5,18 +5,20 @@
     </div>
   </div>
 
+  <%= @item.errors.full_messages %>
+
   <div class="my-4"></div> <!-- 余白を作成 -->
 
   <div class="row">
     <div class="col-lg-6">
-      <%= form_with model: @item_image, class: "my-form" do |f| %>
+      <%= form_with model: @item, url: admin_items_path, multipart: true do |f| %>
         <div class="form-group row">
           <%= f.label :image, "商品画像", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.file_field :image %>
           </div>
         </div>
-        
+
         <!-- 商品名の入力フィールド -->
         <div class="form-group row">
           <%= f.label :name, "商品名", class: "col-sm-2 col-form-label" %>
@@ -24,29 +26,57 @@
             <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
           </div>
         </div>
-        
+
         <!-- 商品説明の入力フィールド -->
         <div class="form-group row">
-          <%= f.label :description, "商品説明", class: "col-sm-2 col-form-label" %>
+          <%= f.label :introduction, "商品説明", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
-            <%= f.text_area :description, class: "form-control", placeholder: "ここに説明文を記述します" %>
+            <%= f.text_area :introduction, class: "form-control", placeholder: "ここに説明文を記述します" %>
           </div>
         </div>
-        
+
+        <!-- ジャンルの選択 -->
+        <div class="form-group row">
+          <%= f.label :genre_id, "ジャンル", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "ジャンルを選択してください" }, class: "form-control" %>
+          </div>
+        </div>
+
         <!-- 税抜価格の入力フィールド -->
         <div class="form-group row">
-          <%= f.label :price_excluding_tax, "税抜価格", class: "col-sm-2 col-form-label" %>
+          <%= f.label :price, "税抜価格", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <div class="input-group">
-              <%= f.number_field :price_excluding_tax, class: "form-control", placeholder: "1000" %>
+              <%= f.text_field :price, class: "form-control" %>
               <div class="input-group-append">
                 <span>円</span>
               </div>
             </div>
           </div>
         </div>
-        
-        <%= f.submit "保存", class: "btn btn-primary" %>
+
+        <!-- 販売ステータスの選択 -->
+        <div class="form-group row">
+          <%= f.label :is_active, "販売ステータス", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :is_active, true, id: "active", class: "form-check-input" %>
+              <%= f.label :is_active_true, "販売中", class: "form-check-label", for: "active" %>
+            </div>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :is_active, false, id: "inactive", class: "form-check-input" %>
+              <%= f.label :is_active_false, "販売停止中", class: "form-check-label", for: "inactive" %>
+            </div>
+          </div>
+        </div>
+
+        <!-- 新規登録ボタン -->
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <%= f.submit "新規登録", class: "btn btn-primary" %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
