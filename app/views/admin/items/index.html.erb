@@ -15,6 +15,8 @@
         <th>商品ID</th>
         <th>商品名</th>
         <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
       </tr>
     </thead>
     <% @items.each do |item| %>
@@ -22,6 +24,9 @@
         <td><%= item.id %></td>
         <td><%= item.name %></td>
         <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+        <td><% if item.is_sales_status == false %>販売中
+            <% else %>販売停止中<% end %></td>
       </tr>
     <% end %>
   </table>
