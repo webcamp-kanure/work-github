@@ -11,7 +11,7 @@ class Item < ApplicationRecord
     if image.attached?
       image.variant(resize_to_fill: [100, 100])
     else
-      'no_image.jpg'
+      'no_image.png'
     end
   end
 
