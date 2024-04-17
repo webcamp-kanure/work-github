@@ -15,6 +15,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.admin_id = current_admin.id
+    @item.is_active = params[:item][:is_active] == 'true'  # 販売ステータスを設定
     if @item.save
       flash[:notice] = "商品を追加しました。"
       redirect_to admin_item_path(@item)
