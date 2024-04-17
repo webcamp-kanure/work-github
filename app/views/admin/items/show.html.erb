@@ -6,9 +6,10 @@
   </div>
   <div class="row">
     <!-- 商品画像 -->
-    <div class="col-lg-6">
-      <%= image_tag @item.get_image, size:'260x160' %>
+    <div class="col-lg-6"
+      <%= image_tag(@item.get_image, class: "img-fluid", width: 300, height: 300) %>
     </div>
+
     <!-- 商品情報 -->
     <div class="col-lg-6">
 
