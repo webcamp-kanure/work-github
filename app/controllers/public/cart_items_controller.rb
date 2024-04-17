@@ -27,7 +27,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    if @cart_item.destroy
+    cart_item = CartItem.find(params[:id])
+    if cart_item.destroy
       flash[:notice] = 'カート内の商品が削除されました'
     else
       flash[:alert] = '削除に失敗しました'

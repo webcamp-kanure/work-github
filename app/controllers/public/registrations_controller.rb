@@ -8,9 +8,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def new
   #   super
   end
-  
+
   def create
-    
+
   end
 
   # POST /resource
