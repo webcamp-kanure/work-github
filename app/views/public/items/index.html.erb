@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-9"> <!-- col-lg-9 に変更 -->
+      <h2>商品一覧</h2>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, item_path(item) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+        <td><% if item.is_active == true %>販売中
+            <% else %>販売停止中<% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
