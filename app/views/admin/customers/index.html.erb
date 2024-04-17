@@ -3,9 +3,9 @@
     <div class="col-lg-9">
       <h2>会員一覧</h2>
     </div>
-    
+
     </div>
-  
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -18,9 +18,12 @@
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.id %></td>
-        <td><%= customer.name %></td>
+        <td>
+          <%= customer.first_name %>
+          <%= customer.last_name %>
+        </td>
         <td><%= customer.email %></td>
-        <td><% if customer.active? %>有効<% else %>退会<% end %></td>
+        <td><% if customer.is_active? %>有効<% else %>退会<% end %></td>
       </tr>
     <% end %>
   </table>
