@@ -8,6 +8,6 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_details, dependent: :destroy
 
-attribute :is_sales_status, :boolean
+attribute :is_sales_status, :boolean, default: true
 
 end
