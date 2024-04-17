@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-9">
+      <h2>会員一覧</h2>
+    </div>
+    
+    </div>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= customer.name %></td>
+        <td><%= customer.email %></td>
+        <td><% if customer.active? %>有効<% else %>退会<% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
