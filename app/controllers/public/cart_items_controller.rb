@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
   before_action :setup_cart_item!, only: %i[create update destroy]
 
   def index
-    @cart_items = current_cart.cart_items.includes([:item])
+    @cart_items = current_cart_item.cart_items.includes([:item])
     @amount = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
@@ -15,7 +15,6 @@ class CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       flash[:alert] = '商品の追加に失敗しました。'
-      # ルートが決まったら22行目を綺麗に直す
       redirect_to item_url(params[:item_id])
     end
   end

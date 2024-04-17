@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row" style="margin-top:60px;">
+
+    <div class="col-md-3 offset-md-3">
+      <%= image_tag @item.get_item_image, size:'260x160' %>
+    </div>
+
+    <div class="col" style="padding-left:35px;">
+      <h2>
+        <%= @item.name %>
+      </h2>
+
+      <div style="font-size:24px; height:70px;">
+      <%= @item.introduction %>
+      </div>
+
+      <div>
+        <p style="font-size:14px;">
+          <span style="font-size:28px;">￥<%= @taxed_price %></span>
+        （税込）
+        </p>
+      </div>
+
+      <%= form_with model:@cart_item_new, local:true do |f| %>
+      <div>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.select :amount, *[1..10] %>
+        <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
