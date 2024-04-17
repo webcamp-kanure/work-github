@@ -7,10 +7,9 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    
   end
-  
-    
+
+
 
   def create
     @item = Item.new(item_params)
@@ -50,6 +49,6 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :is_active, :genre_id, :image)
   end
-  
-  
+
+
 end
