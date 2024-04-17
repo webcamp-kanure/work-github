@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
   has_one_attached :image
 
   has_many :cart_items
@@ -6,13 +7,11 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_details, dependent: :destroy
 
-  attribute :is_sales_status, :boolean
-
   def get_image
     if image.attached?
       image.variant(resize_to_fill: [100, 100])
     else
-      'no_image.png'
+      'no_image.jpg'
     end
   end
 
