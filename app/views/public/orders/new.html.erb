@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row" style="margin-top:20px; padding-left:100px;">
-    <%= form_with model: @order, url: "/orders/confirm", method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: "/orders/confirm", method: :post do |f| %>
       <h5><strong>支払方法</strong></h5>
         <div style="padding-left:30px">
           <p>
@@ -22,11 +22,11 @@
         <%= current_customer.address %><br>
         <%= current_customer.last_name %><%= current_customer.first_name %>
       </div>
-    <%end%>
   </div>
   <div class="row d-flex justify-content-center align-items-center" style="margin-top:75px;">
     <div class="btn-group btn-group-lg">
       <%= f.submit "確認画面へ進む" %>
     </div>
   </div>
+  <%end%>
 </div>
