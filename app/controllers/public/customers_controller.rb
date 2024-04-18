@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def show
