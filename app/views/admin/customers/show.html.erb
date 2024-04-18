@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-lg-12">
-      <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報</h2>
+      <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</h2>
     </div>
   </div>
 
@@ -16,11 +16,11 @@
             </tr>
             <tr>
               <td>氏名</td>
-              <td><%= @customer.first_name %><%= @customer.last_name %></td>
+              <td><%= @customer.last_name %><%= @customer.first_name %></td>
             </tr>
             <tr>
               <td>カナ</td>
-              <td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
+              <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
             </tr>
             <tr>
               <td>郵便番号</td>
