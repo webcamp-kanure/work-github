@@ -18,7 +18,7 @@
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.id %></td>
-        <td><%= customer.first_name %> <%= customer.last_name %></td>
+        <td><%= link_to "#{customer.first_name} #{customer.last_name}", admin_customer_path(customer.id) %></td>
         <td><%= customer.email %></td>
         <td><% if customer.is_active? %>有効<% else %>退会<% end %></td>
       </tr>
