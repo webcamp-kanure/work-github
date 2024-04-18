@@ -16,7 +16,7 @@
         <tr>
           <td><%=link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
           <td><%= order.customer.first_name %><%= order.customer.last_name %></td>
-          <td><%= order.order_details.sum(:quantity) %></td> <!-- 注文明細の数量を合計して表示 -->
+          <td><%= order.order_details.sum(:amount) %></td> <!-- 注文明細の数量を合計して表示 -->
         </tr>
       <% end %>
     </table>
