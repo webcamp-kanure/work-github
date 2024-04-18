@@ -6,8 +6,8 @@
   </div>
   <div class="row">
     <!-- 商品画像 -->
-    <div class="col-lg-6"
-      <%= image_tag(@item.get_image, class: "img-fluid", width: 300, height: 300) %>
+    <div class="col-lg-6">
+      <%= image_tag(@item.get_image, class: "img-fluid", width: 260, height: 160) %>
     </div>
 
     <!-- 商品情報 -->
@@ -27,11 +27,11 @@
               <td>ジャンル</td>
               <td><%= @item.genre.name %></td>
             </tr>
+            
             <tr>
-              <td>価格</td>
-              <td><%= @item.price %>円</td>
+              <td>税込価格<br>（税抜価格）</td>
+              <td><%= @item.with_tax_price %>円（<%= @item.price %>円）</td>
             </tr>
-            <tr>
               <td>販売ステータス</td>
               <td>
               <% if @item.is_active == true %>
