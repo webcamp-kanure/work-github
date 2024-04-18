@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報</h2>
+    </div>
+  </div>
+
+  <%= form_for(@customer, as: :customer, url: admin_customer_path(@customer)) do |f| %>
+
+
+    <div class="my-4"></div>
+
+    <!-- 名前 -->
+    <div class="row align-items-start">
+      <div class="col-sm-3">
+        <%= f.label :名前 %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.label :first_name, "（姓）" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        <%= f.label :last_name, "（名）" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+      </div>
+    </div>
+
+    <!-- フリガナ -->
+    <div class="row align-items-start">
+      <div class="col-sm-3">
+        <%= f.label :フリガナ %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.label :（セイ） %>
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+        <%= f.label :（メイ） %>
+        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+      </div>
+    </div>
+
+
+
+    <!-- 郵便番号 -->
+    <div class="row align-items-start">
+      <div class="col-sm-3">
+        <%= f.label :郵便番号（ハイフンなし） %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+      </div>
+    </div>
+
+    <!-- 住所 -->
+    <div class="row align-items-start">
+      <div class="col-sm-3">
+        <%= f.label :住所 %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :address, autofocus: true, autocomplete: "address"%>
+      </div>
+    </div>
+
+    <!-- 電話番号 -->
+    <div class="row align-items-start">
+      <div class="col-sm-3">
+        <%= f.label :電話番号（ハイフンなし） %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+      </div>
+    </div>
+
+    <!-- メールアドレス -->
+    <div class="row align-items-start">
+      <div class="col-sm-3">
+        <%= f.label :メールアドレス %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+
+    <!-- 会員ステータスの選択 -->
+      <div class="row align-items-start">
+          <%= f.label :is_active, "会員ステータス", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :is_active, true, id: "active", class: "form-check-input" %>
+              <%= f.label :is_active_true, "有効", class: "form-check-label", for: "active" %>
+            </div>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :is_active, false, id: "inactive", class: "form-check-input" %>
+              <%= f.label :is_active_false, "退会", class: "form-check-label", for: "inactive" %>
+            </div>
+          </div>
+        </div>
+    
+    
+    <div class="actions row">
+      <div class="col-sm-9 offset-sm-3">
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+      </div>
+    </div>
+
+    
+  <% end %>
+</div>
+
