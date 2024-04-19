@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row" style="margin-top:20px; padding-left:100px;">
-    <%= form_with model: @order, url: "/orders/confirm", method: :post do |f| %>
+    <%= form_for @order, url: "/orders/confirm", method: :post do |f| %>
       <h5><strong>支払方法</strong></h5>
         <div style="padding-left:30px">
           <p>
