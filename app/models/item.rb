@@ -18,5 +18,10 @@ class Item < ApplicationRecord
   def with_tax_price
    (price * 1.1).floor
   end
-
+  
+  with_options presence: true do
+    validates :genre_id
+    validates :name
+    validates :price
+  end
 end
