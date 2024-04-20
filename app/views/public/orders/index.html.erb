@@ -7,16 +7,30 @@
     <table class="table">
       <thead>
         <tr>
-          <th>購入日時</th>
-          <th>購入者</th>
-          <th>注文個数</th>
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>注文商品</th>
+          <th>支払金額</th>
+          <th>注文詳細</th>
         </tr>
       </thead>
       <% @orders.each do |order| %>
         <tr>
-          <td><%=link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
-          <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-          <td><%= order.order_details.sum(:amount) %></td> <!-- 注文明細の数量を合計して表示 -->
+          <td><%=link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+          <td>
+            <P>
+              〒<%= order.postal_code %>
+              <%= order.address %>
+              <%= order.name %>
+            </P>
+          </td>
+          <td>
+          <% OrderDetail.where(order_id: order.id).each do |order_detail| %>
+            <%= order_detail.item.name %></br>
+          <% end %>
+          </td>
+          <td><%= order.total_payment %></td>
+          <td></td>
         </tr>
       <% end %>
     </table>
