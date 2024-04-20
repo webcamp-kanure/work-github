@@ -1,5 +1,5 @@
 <div class="container p-3">
-  <div class="row">
+  <div class="row" style="margin-top:10px;">
     <div class="col-md-12">
       <h3>注文情報確認</h3>
     </div>
@@ -46,12 +46,12 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-lg-4">
-      <h4>支払い方法</h4>
+  <div class="row" style="margin-top:30px;">
+    <div class="col-lg-2">
+      <h5><strong>支払方法</strong></h5>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-6">
       <% if @selected_payment_method == "クレジットカード" %>
         クレジットカード
       <% else %>
@@ -61,37 +61,37 @@
     <div class="col-lg-4"></div>
   </div>
 
-  <div="row">
-    <div class="col-lg-4">
-      <h4>お届け先</h4>
+  <div class="row" style="margin-top:25px;">
+    <div class="col-lg-2">
+      <h5><strong>お届け先</strong></h5>
     </div>
 
-    <div class="col-lg-4">
-      <%= @selected_address %>
+    <div class="col-lg-6">
+      <p><%= @selected_address %></br>
+        <%= @selected_name %>
+      </p>
     </div>
     <div class="col-lg-4"></div>
   </div>
 
-  <div="row d-flex justify-content-center">
-    <div class="col-lg-4">
-      <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+  <div="row d-flex justify-content-center align-items-center" style="margin-top:60px;">
+    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.hidden_field :total_payment, :value => @total_payment %>
+      <%= f.hidden_field :shipping_cost, :value => @shipping_cost %>
+      <%= f.hidden_field :payment_method, :value => @selected_payment_method %>
+      <%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
+      <%= f.hidden_field :address, :value => current_customer.address %>
+      <%= f.hidden_field :name, :value => current_customer.last_name + " " + current_customer.first_name %>
 
-        <%= f.hidden_field :customer_id, :value => current_customer.id %>
-        <%= f.hidden_field :total_payment, :value => @total_payment %>
-        <%= f.hidden_field :shipping_cost, :value => @shipping_cost %>
-        <%= f.hidden_field :payment_method, :value => @selected_payment_method %>
-        <%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
-        <%= f.hidden_field :address, :value => current_customer.address %>
-        <%= f.hidden_field :name, :value => current_customer.last_name + " " + current_customer.first_name %>
-
-        <% if @selected_payment_method == "クレジットカード" %>
-          <%= f.hidden_field :status, :value => "入金確認" %>
-        <% else %>
-          <%= f.hidden_field :status, :value => "入金待ち" %>
-        <% end %>
-
-        <%= submit_tag "注文を確定する", class: "btn btn-success" %>
+      <% if @selected_payment_method == "クレジットカード" %>
+        <%= f.hidden_field :status, :value => "入金確認" %>
+      <% else %>
+        <%= f.hidden_field :status, :value => "入金待ち" %>
       <% end %>
-    </div>
+      <div class="btn-group btn-group-lg" style="padding-left:475px; margin:30px auto 175px;">
+        <%= submit_tag "注文を確定する", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -22,7 +22,8 @@ class Public::OrdersController < ApplicationController
     @total_payment = @shipping_cost + @cart_items_price
 
     # 配送先住所
-    @selected_address = current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name
+    @selected_address = "〒" + current_customer.postal_code + " " + current_customer.address
+    @selected_name = current_customer.last_name + current_customer.first_name
 
   end
 
