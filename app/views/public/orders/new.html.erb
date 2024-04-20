@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row" style="margin-top:40px;">
+    <div class="col-lg-2 offset-lg-2">
+      <h4 style="background-color:#ddd;">注文情報入力</h4>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px; padding-left:100px;">
+    <%= form_for @order, url: "/orders/confirm", method: :post do |f| %>
+    <h5><strong>支払方法</strong></h5>
+    <div style="padding-left:30px">
+      <p>
+        <%= f.radio_button :payment_method,:クレジットカード,checked: "checked" %>
+        <%= f.label :payment_method, "クレジットカード" %>
+        <br>
+        <%= f.radio_button :payment_method, :銀行振込 %>
+        <%= f.label :payment_method, "銀行振込" %>
+      </p>
+    </div>
+    <h5><strong>お届け先</strong></h5>
+    <div style="padding-left:30px">
+      〒<%= current_customer.postal_code %>
+      <%= current_customer.address %><br>
+      <%= current_customer.last_name %><%= current_customer.first_name %>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center" style="margin-top:75px;">
+      <div class="btn-group btn-group-lg">
+        <%= f.submit "確認画面へ進む" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
