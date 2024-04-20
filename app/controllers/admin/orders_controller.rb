@@ -9,8 +9,7 @@ def show
   @order = Order.find(params[:id])
   @order_details = @order.order_details
   @customer = @order.customer
-  @order = Order.find(params[:id])
-  @item = @order.item
+  # @item = @order.details
 end
 
   def update
