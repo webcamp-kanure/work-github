@@ -4,14 +4,14 @@
       <h2>注文履歴詳細</h2>
     </div>
   </div>
-  
+
     <div class="col-lg-6">
 
       <table class="table">
           <tbody>
             <tr>
               <td>購入者</td>
-              <td><%= link_to "#{@customer.first_name} #{@customer.last_name}", admin_customer_path(@customer.id) %></td>
+              <td><%= link_to "#{@order.customer.first_name} #{@order.customer.last_name}", admin_customer_path(@order.customer.id) %></td>
             </tr>
             <tr>
               <td>注文日</td>
@@ -21,27 +21,20 @@
               <td>配送先</td>
               <td><%= @order.postal_code %><%= @order.address %></td>
             </tr>
-            
-            <tr>
-              <td>税込価格<br>（税抜価格）</td>
-              <td><%= @item.with_tax_price %>円（<%= @item.price %>円）</td>
-              <td><%= @order.name %></td>
-            </tr>
-            
             <tr>
               <td>支払方法</td>
               <td><%= @order.payment_method %></td>
             </tr>
-            
+
           </tbody>
       </table>
-    
+
       <div class="container mt-4">
         <div class="row">
           <div class="col-lg-12">
           </div>
         </div>
-        
+
          <table class="table">
           <thead>
             <tr>
@@ -51,19 +44,19 @@
               <th>小計</th>
             </tr>
           </thead>
-          <% @items.each do |item| %>
+          <% @order_details.each do |order_detail| %>
             <tr>
-              <td><%= item.name %></td>
-              <td><%= @item.with_tax_price %></td>
-              <td><%= item.quantity %></td>
-              <td><%= item.with_tax_price * item.quantity %></td>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.price.with_tax_price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.with_tax_price * item.quantity %></td>
             </tr>
           <% end %>
         </table>
       </div>
-      
+
         <div class="row mt-4">
-        <div class="col-lg-9 offset-lg-3"> <!-- Adjust the offset based on your layout -->
+        <div class="col-lg-9 offset-lg-3">
           <table class="table">
             <tbody>
               <tr>
@@ -82,11 +75,11 @@
           </table>
         </div>
       </div>
-      
-      
-      
-      
-      
+
+
+
+
+
 
     </div>
   </div>
