@@ -7,9 +7,9 @@ class Admin::OrdersController < ApplicationController
 
 def show
   @order = Order.find(params[:id])
-  @order_details = OrderDetail.where(order_id: @order.id).all
-  @items = @order_detail.items.all
-  @non_taxed_price = @order_detail.price - 800
+  @order_details = @order.order_details
+  @customer = @order.customer
+  # @item = @order.details
 end
 
   def update

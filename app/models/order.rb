@@ -1,6 +1,9 @@
 class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details, dependent: :destroy
+  
+  has_many :order_details
+  has_many :items, through: :order_details
 
   enum status: {
     "入金待ち":0,
