@@ -50,8 +50,6 @@ class Public::OrdersController < ApplicationController
       end
       redirect_to thanks_order_path
     else
-
-    byebug
       @order = Order.new
       render :new
     end
