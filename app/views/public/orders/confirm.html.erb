@@ -8,11 +8,11 @@
   <div class="row">
     <div class="col-lg-8">
       <table class="table table-bordered">
-        <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
+        <tr class="table-active">
+          <th class="bg-gray-light">商品名</th>
+          <th class="bg-gray-light">単価(税込)</th>
+          <th class="bg-gray-light">数量</th>
+          <th class="bg-gray-light">小計</th>
         </tr>
         <% @cart_items.each do |cart_item| %>
           <tr>
@@ -30,17 +30,17 @@
 
     <div class="col-lg-4">
       <table class="table table-bordered">
-        <tr>
-          <td>送料</td>
-          <td><%= @shipping_cost %></td>
+        <tr class="table-active">
+          <th class="bg-gray-light" style="width:50%;">送料</th>
+          <th class="bg-white" style="width:50%;"><%= @shipping_cost %></th>
         </tr>
-        <tr>
-          <td>商品合計</td>
-          <td><%= @cart_items_price %></td>
+        <tr class="table-active">
+          <td class="bg-gray-light">商品合計</td>
+          <td class="bg-white"><%= @cart_items_price %></td>
         </tr>
-        <tr>
-          <td>請求額</td>
-          <td><%= @total_payment %></td>
+        <tr class="table-active">
+          <td class="bg-gray-light">請求額</td>
+          <td class="bg-white"><%= @total_payment %></td>
         </tr>
       </table>
     </div>
@@ -90,7 +90,7 @@
         <%= f.hidden_field :status, :value => "入金待ち" %>
       <% end %>
       <div class="btn-group btn-group-lg" style="padding-left:475px; margin:30px auto 175px;">
-        <%= submit_tag "注文を確定する", class: "btn btn-primary" %>
+        <%= submit_tag "注文を確定する", class: "btn btn-success" %>
       </div>
     <% end %>
   </div>
