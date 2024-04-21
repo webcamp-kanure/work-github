@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row" style="margin-top:60px;">
-    
+
     <div class="col-md-3">
       <%= render 'public/shared/left_sidebar', genres: @genres %>
     </div>
 
-    <div class="col-md-3">
-      <%= image_tag @item.get_image, size:'260x160' %>
+    <div class="col-md-3 text-center">
+      <%= image_tag(@item.get_image, class: "img-fluid", style: "max-height: 400px; width: auto;") %>
     </div>
 
     <div class="col" style="padding-left:35px;">
