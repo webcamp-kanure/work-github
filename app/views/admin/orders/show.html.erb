@@ -5,53 +5,53 @@
     </div>
   </div>
 
-  <div class="col-lg-6">
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>購入者</td>
-          <td><%= link_to "#{@customer.last_name} #{@customer.first_name}", admin_customer_path(@customer) %></td>
-        </tr>
-        <tr>
-          <td>注文日</td>
-          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-          <td>配送先</td>
-          <td><%= @order.postal_code %><br><%= @order.address %></td>
-        </tr>
-        <tr>
-          <td>支払方法</td>
-          <td><%= @order.payment_method %></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <% @sum = 0 %>
-      <% @order_details.each do |order_detail| %>
-        <% @sum += order_detail.item.with_tax_price * order_detail.amount %>
-        <tr>
-          <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.item.with_tax_price %>円</td>
-          <td><%= order_detail.amount %></td>
-          <td><%= order_detail.item.with_tax_price * order_detail.amount %>円</td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-
-
-    <div class="col-lg-6 offset-lg-6">
+  <div class="row">
+    <div class="col-lg-6">
       <table class="table">
+        <tbody>
+          <tr>
+            <td>購入者</td>
+            <td><%= link_to "#{@customer.last_name} #{@customer.first_name}", admin_customer_path(@customer) %></td>
+          </tr>
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td>配送先</td>
+            <td><%= @order.postal_code %><br><%= @order.address %></td>
+          </tr>
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment_method %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <% @sum = 0 %>
+        <% @order_details.each do |order_detail| %>
+          <% @sum += order_detail.item.with_tax_price * order_detail.amount %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.with_tax_price %>円</td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.item.with_tax_price * order_detail.amount %>円</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="col-lg-3 d-flex align-items-end justify-content-end">
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <td>商品合計</td>
@@ -70,4 +70,3 @@
     </div>
   </div>
 </div>
-
