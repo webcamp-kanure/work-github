@@ -9,7 +9,9 @@ class Item < ApplicationRecord
 
   def get_image
     if image.attached?
-      image.variant(resize_to_fill: [100, 100])
+      image
+      # image.variant(resize_to_fill: [nil, 2000])
+      # image.variant(resize_to_fit: [nil, 2000],limit: [2000, 2000])
     else
       'no_image.png'
     end
