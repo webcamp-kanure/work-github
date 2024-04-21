@@ -1,13 +1,13 @@
 <div class="container-lg mt-4">
-  <div class="row">
+  <div class="row pb-5">
 
     <div class="col-md-3">
       <%= render 'public/shared/left_sidebar', genres: @genres %>
     </div>
 
-    <div class="col-lg-9"> <!-- col-lg-9 に変更 -->
+    <div class="col-lg-9">
 
-      <h2>商品一覧</h2>
+      <h2>商品一覧<small>(全<%= @items.count %>件)</small></h2>
 
       <div class="row">
         <% @items.each do |item| %>
