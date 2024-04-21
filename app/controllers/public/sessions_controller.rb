@@ -44,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
     return if customer.is_active == true
 
     if customer.is_active == false
-      redirect_to sign_in_path
+      redirect_to new_customer_session_path
     end
 
   end
