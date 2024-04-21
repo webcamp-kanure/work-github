@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      <h3>新規会員登録</h3>
+  <div class="row mt-5">
+    <div class="col-lg-10 offset-lg-2">
+      <h4 style="background-color:#ddd; text-align:center; width:180px;">新規会員登録</h4>
     </div>
   </div>
 
@@ -13,7 +13,7 @@
 
     <!-- 名前 -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 offset-lg-1 mb-2">
         <%= f.label :名前 %>
       </div>
       <div class="col-lg-3">
@@ -28,7 +28,7 @@
 
     <!-- フリガナ -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 offset-lg-1 mb-2">
         <%= f.label :フリガナ %>
       </div>
       <div class="col-lg-3">
@@ -43,7 +43,7 @@
 
     <!-- メールアドレス -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 offset-lg-1 mb-2">
         <%= f.label :メールアドレス %>
       </div>
       <div class="col-lg-3">
@@ -53,7 +53,7 @@
 
     <!-- 郵便番号 -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 offset-lg-1 mb-2">
         <%= f.label :'郵便番号（ハイフンなし）' %>
       </div>
       <div class="col-lg-3">
@@ -63,7 +63,7 @@
 
     <!-- 住所 -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 offset-lg-1 mb-2">
         <%= f.label :住所 %>
       </div>
       <div class="col-lg-6">
@@ -73,7 +73,7 @@
 
     <!-- 電話番号 -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 offset-lg-1 mb-2">
         <%= f.label :電話番号（ハイフンなし） %>
       </div>
       <div class="col-lg-3">
@@ -83,7 +83,7 @@
 
     <!-- パスワード -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 offset-lg-1 mb-2">
         <%= f.label :パスワード（6文字以上） %>
       </div>
       <div class="col-lg-3">
@@ -93,7 +93,7 @@
 
     <!-- パスワード（確認用） -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 offset-lg-1 mb-4">
         <%= f.label :パスワード（確認用） %>
       </div>
       <div class="col-lg-3">
@@ -103,7 +103,7 @@
 
     <!-- Submit Button -->
     <div class="row">
-      <div class="col-lg-6 offset-lg-3">
+      <div class="col-lg-6 offset-lg-4">
         <%= f.submit "新規登録", class: "btn btn-success float-end" %>
       </div>
     </div>
@@ -113,11 +113,14 @@
 
     <!-- 既に登録済みの方 -->
     <div class="row">
-      <div class="col-lg-6">
-        <h3>既に登録済みの方</h3>
+      <div class="col-lg-6 offset-lg-1 pl-5">
+        <h4 style="background-color:#ddd; text-align:center; width:240px;">既に登録済みの方</h4>
       </div>
-      <% if controller_name != 'sessions' %>
-        <%= link_to "こちら", new_session_path(resource_name) %>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-2">
+        <% if controller_name != 'sessions' %>
+          <%= link_to "こちら", new_session_path(resource_name) %>
         <% end %>からログインしてください
       </div>
     </div>
