@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-lg-6 offset-lg-1">
+    <div class="col-lg-6 offset-lg-3">
       <h4 style="background-color:#ddd; text-align:center; width:180px;">商品新規登録</h4>
     </div>
   </div>
@@ -8,43 +8,44 @@
   <div class="my-4"></div> 
 
   <div class="row justify-content-center">
-    <div class="col-lg-9">
+    <div class="col-lg-6">
       <%= form_with model: @item, url: admin_items_path, multipart: true do |f| %>
+        <!-- 商品情報の入力フォーム -->
         <div class="form-group row">
-          <%= f.label :image, "商品画像", class: "col-sm-2 col-form-label" %>
-          <div class="col-sm-10">
+          <%= f.label :image, "商品画像", class: "col-sm-3 col-form-label" %>
+          <div class="col-sm-9">
             <%= f.file_field :image %>
           </div>
         </div>
 
         <!-- 商品名の入力フィールド -->
         <div class="form-group row">
-          <%= f.label :name, "商品名", class: "col-sm-2 col-form-label" %>
-          <div class="col-sm-10">
+          <%= f.label :name, "商品名", class: "col-sm-3 col-form-label" %>
+          <div class="col-sm-9">
             <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
           </div>
         </div>
 
         <!-- 商品説明の入力フィールド -->
         <div class="form-group row">
-          <%= f.label :introduction, "商品説明", class: "col-sm-2 col-form-label" %>
-          <div class="col-sm-10">
-            <%= f.text_area :introduction, class: "form-control", placeholder: "ここに説明文を記述します" %>
+          <%= f.label :introduction, "商品説明", class: "col-sm-3 col-form-label" %>
+          <div class="col-sm-9">
+            <%= f.text_area :introduction, class: "form-control", placeholder: "ここに説明文を記述します", rows: 5 %>
           </div>
         </div>
 
         <!-- ジャンルの選択 -->
         <div class="form-group row">
-          <%= f.label :genre_id, "ジャンル", class: "col-sm-2 col-form-label" %>
-          <div class="col-sm-10">
+          <%= f.label :genre_id, "ジャンル", class: "col-sm-3 col-form-label" %>
+          <div class="col-sm-9">
             <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "ジャンルを選択してください" }, class: "form-control" %>
           </div>
         </div>
 
         <!-- 税抜価格の入力フィールド -->
         <div class="form-group row">
-          <%= f.label :price, "税抜価格", class: "col-sm-2 col-form-label" %>
-          <div class="col-sm-10">
+          <%= f.label :price, "税抜価格", class: "col-sm-3 col-form-label" %>
+          <div class="col-sm-9">
             <div class="input-group">
               <%= f.text_field :price, class: "form-control" %>
               <div class="input-group-append">
@@ -56,8 +57,8 @@
 
         <!-- 販売ステータスの選択 -->
         <div class="form-group row">
-          <%= f.label :is_active, "販売ステータス", class: "col-sm-2 col-form-label" %>
-          <div class="col-sm-10">
+          <%= f.label :is_active, "販売ステータス", class: "col-sm-3 col-form-label" %>
+          <div class="col-sm-9">
             <div class="form-check form-check-inline">
               <%= f.radio_button :is_active, true, id: "active", class: "form-check-input" %>
               <%= f.label :is_active_true, "販売中", class: "form-check-label", for: "active" %>
@@ -70,10 +71,8 @@
         </div>
 
         <!-- 新規登録ボタン -->
-        <div class="form-group row">
-          <div class="col-sm-10 offset-sm-2">
-            <%= f.submit "新規登録", class: "btn btn-primary" %>
-          </div>
+        <div class="text-center">
+          <%= f.submit "新規登録", class: "btn btn-primary btn-lg", style: "background-color: green; margin-top: 10px;" %>
         </div>
       <% end %>
     </div>
