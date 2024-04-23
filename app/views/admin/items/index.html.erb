@@ -1,43 +1,46 @@
-<script src="https://kit.fontawesome.com/200d44628f.js" crossorigin="anonymous"></script>
-
-
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-lg-9 offset-lg-1"> 
-      <h4 style="background-color:#ddd; text-align:center; width:180px;">商品一覧</h4>
-    </div>
-    <div class="col-lg-2">
-      <div class="text-right">
-        <%= link_to new_admin_item_path, class: "btn btn-lg " do %>
+<div class="row pb-4">
+  <div class="col-lg-9 offset-lg-1">
+    <h4 style="background-color:#eee; text-align:center; width:180px;">商品一覧</h4>
+  </div>
+  <div class="col-lg-2">
+    <div class="text-right">
+      <%= link_to new_admin_item_path, class: "btn btn-lg" do %>
         <i class="fa-solid fa-circle-plus fa-2xl"></i>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col-md-12">
-      <table class=table  style="border-bottom: 1px solid black;">
+</div>
 
-        <thead style="background-color: #ddd;"> 
-          <tr>
-            <th class="border-dark" style="width:13%;">商品ID</th>
-            <th class="border-dark" style="width:37%;">商品名</th>
-            <th class="border-dark" style="width:10%;">税抜価格</th>
-            <th class="border-dark" style="width:20%;">ジャンル</th>
-            <th class="border-dark" style="width:20%;">ステータス</th>
-          </tr>
-        </thead>
-        <% @items.each do |item| %>
-          <tr style="height:60px; padding:0;">
-            <td class="align-middle border-dark py-1"><%= item.id %></td>
-            <td class="align-middle border-dark py-1"><%= link_to item.name, admin_item_path(item) %></td>
-            <td class="align-middle border-dark py-1"><%= item.price %></td>
-            <td class="align-middle border-dark py-1"><%= item.genre.name %></td>
-            <td class="align-middle border-dark py-1"><% if item.is_active == true %>販売中
-                <% else %>販売停止中<% end %></td>
-          </tr>
-        <% end %>
-      </table>
-   </div>
+<div class="row">
+  <div class="col-md-12">
+
+    <table class="table table-borderless border-top border-bottom">
+      <thead class="table-active">
+        <tr>
+          <th class="border-dark" style="width:10%;">商品ID</th>
+          <th class="border-dark" style="width:30%;">商品名</th>
+          <th class="border-dark" style="width:10%;">税抜価格</th>
+          <th class="border-dark" style="width:30%;">ジャンル</th>
+          <th class="border-dark" style="width:20%;">ステータス</th>
+        </tr>
+      </thead>
+      <body>
+      <% @items.each do |item| %>
+        <tr class="py-1"style="height:60px; padding:0;">
+          <td class="align-middle"><%= item.id %></td>
+          <td class="align-middle"><%= link_to item.name, admin_item_path(item) %></td>
+          <td class="align-middle"><%= item.price.to_s(:delimited) %></td>
+          <td class="align-middle"><%= item.genre.name %></td>
+          <td class="align-middle">
+            <% if item.is_active == true %>
+              <strong class="text-success">販売中</strong>
+            <% else %>
+              <strong class="text-muted">販売停止中</strong>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+
   </div>
+</div>

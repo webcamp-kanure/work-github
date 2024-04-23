@@ -5,7 +5,7 @@
 
     <div class="col-md-9">
       <!--仮の画像を挿入中　center-block存在しないため適用不可-->
-    
+
       <div class="row p-2" style="width: 80%; background-image: url('<%= asset_path('cloth.jpg') %>'); background-size: cover; background-position: center;">
         <div class="col-md-10 offset-md-1 d-flex align-items-center justify-content-center">
           <div class="row m-5 bg-light border border-3 border-dark">
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="row p-2">
         <h2>新着商品</h2>
       </div>
@@ -36,9 +36,9 @@
         <% end %>
       </div>
 
-      <div class="row p-2 text-right">
+      <div class="row p-2 justify-content-end">
         <%= link_to "全ての商品を見る>", items_path %>
       </div>
-    
+
     </div>
 </div>

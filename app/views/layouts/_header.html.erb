@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 <header class="vw-100 border-bottom border-dark align-items-center" style="min-height:125px">
-=======
-<header class="border-bottom border-dark d-flex align-items-center" style="min-height:125px">
->>>>>>> origin/develop
   <nav class="navbar navbar-expand-lg navbar-light w-100">
       <a class="navbar-brand" href="/"><%= image_tag('naganocafe.png', style: "max-height: 100px; width: auto;") %></a>
-
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,7 +9,7 @@
       <div class="collapse navbar-collapse items-right" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <!--customersヘッダー-->
-          <div class="mt-2 mr-5">
+          <div class="items-left mt-2 mr-5">
           <% if current_customer %>
             ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん!　
           <% else %>
@@ -42,6 +37,5 @@
           <% end %>
         </ul>
       </div>
-
   </nav>
 </header>
