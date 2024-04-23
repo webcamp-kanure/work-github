@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: "cart_items_destroy_all"
     resources :cart_items, only: [:index,:update,:destroy,:create]
 
+    get '/genre/search/:id' => 'genres#genre_search', as: "public_genre_search"
+
     get 'orders/thanks' => 'orders#thanks', as: "thanks_order"
     resources :orders, only: [:new,:create,:index,:show]
     post 'orders/confirm' => 'orders#confirm'
