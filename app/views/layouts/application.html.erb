@@ -10,14 +10,19 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
- <body style="margin:10px 25px; border: 1px solid #aaa">
-      <%= render 'layouts/header' %>
-
-      <main>
-        <%= yield %>
-      </main>
-
-      <%= render 'layouts/footer' %>
+  <body>
+    <div class="d-flex flex-column">
+    
+    <%= render 'layouts/header' %>
+    <main>
+      <div class="container">
+        <div class="row pt-5 pb-3">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+    <%= render 'layouts/footer' %>
+    
+    </div>
   </body>
 </html>

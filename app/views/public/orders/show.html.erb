@@ -1,79 +1,70 @@
-<div class="container mt-4" style="padding-bottom:125px;">
-  <div class="row" style="margin:45px auto">
-    <div class="col-lg-10 offset-lg-2">
-      <h4 style="background-color:#ddd; text-align:center; width:180px;">注文履歴詳細</h4>
-    </div>
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-7">
-      <h5 class="ml-1 font-weight-bold">注文情報</h5>
-      <table class="table table-bordered">
-        <tr>
-          <th class="table-active align-middle border-dark" style="width:25%;">注文日</th>
-          <td class="align-middle border-dark"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-          <th class="table-active align-middle py-0 border-dark" style="width:25%;">配送先</th>
-          <td class="align-middle py-0 border-dark">
-              〒<%= @order.postal_code %></br>
-              <%= @order.address %></br>
-              <%= @order.name %>
-          </td>
-        </tr>
-        <tr>
-          <th class="table-active align-middle border-dark" style="width:25%;">支払方法</th>
-          <td class="align-middle border-dark"><%= @order.payment_method %></td>
-        </tr>
-        <tr>
-          <th class="table-active align-middle border-dark" style="width:25%;">ステータス</th>
-          <td class="align-middle border-dark"><%= @order.status %></td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="col-md-5">
-      <h5 class="ml-1 font-weight-bold">請求情報</h5>
-      <table class="table table-bordered">
-        <tr>
-          <th class="table-active border-dark" style="width:60%;">商品合計</th>
-          <td class="align-middle py-1 pl-1 border-dark"><%= (@order.total_payment-@order.shipping_cost).to_s(:delimited) %></td>
-        </tr>
-        <tr>
-          <th class="table-active border-dark" style="width:60%;">配送料</th>
-          <td class="align-middle py-1 pl-1 border-dark"><%= @order.shipping_cost.to_s(:delimited) %></td>
-        </tr>
-        <tr>
-          <th class="table-active border-dark font-weight-bold" style="width:60%;">ご請求額</th>
-          <td class="align-middle py-1 pl-1 border-dark"><%= @order.total_payment.to_s(:delimited) %></td>
-        </tr>
-      </table>
-    </div>
-
-  </div>
-  <div class="row">
-    <div class="col-md-9">
-      <h5 class="ml-1 font-weight-bold">注文内容</h5>
-      <table class="table table-bordered">
-        <thead class="table-active">
-          <th class="border-dark" style="width:50%;">商品</th>
-          <th class="border-dark" style="width:20%;">単価（税込）</th>
-          <th class="border-dark" style="width:15%;">個数</th>
-          <th class="border-dark" style="width:15%;">小計</th>
-        </thead>
-        <tbody>
-          <% @order_details.each do |order_detail| %>
-            <tr>
-              <td class="align-middle border-dark"><%= order_detail.item.name %></td>
-              <td class="align-middle border-dark"><%= order_detail.price.to_s(:delimited) %></td>
-              <td class="align-middle border-dark"><%= order_detail.amount %></td>
-              <td class="align-middle border-dark"><%= (order_detail.price*order_detail.amount).to_s(:delimited) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
+<div class="col-lg-10 offset-lg-2">
+  <h4 style="background-color:#ddd; text-align:center; width:180px;">注文履歴詳細</h4>
 </div>
+
+  <div class="col-md-7">
+    <h5 class="ml-1 font-weight-bold">注文情報</h5>
+    <table class="table table-bordered">
+      <tr>
+        <th class="table-active align-middle border-dark" style="width:25%;">注文日</th>
+        <td class="align-middle border-dark"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <th class="table-active align-middle py-0 border-dark" style="width:25%;">配送先</th>
+        <td class="align-middle py-0 border-dark">
+            〒<%= @order.postal_code %></br>
+            <%= @order.address %></br>
+            <%= @order.name %>
+        </td>
+      </tr>
+      <tr>
+        <th class="table-active align-middle border-dark" style="width:25%;">支払方法</th>
+        <td class="align-middle border-dark"><%= @order.payment_method %></td>
+      </tr>
+      <tr>
+        <th class="table-active align-middle border-dark" style="width:25%;">ステータス</th>
+        <td class="align-middle border-dark"><%= @order.status %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-md-5">
+    <h5 class="ml-1 font-weight-bold">請求情報</h5>
+    <table class="table table-bordered">
+      <tr>
+        <th class="table-active border-dark" style="width:60%;">商品合計</th>
+        <td class="align-middle py-1 pl-1 border-dark"><%= (@order.total_payment-@order.shipping_cost).to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <th class="table-active border-dark" style="width:60%;">配送料</th>
+        <td class="align-middle py-1 pl-1 border-dark"><%= @order.shipping_cost.to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <th class="table-active border-dark font-weight-bold" style="width:60%;">ご請求額</th>
+        <td class="align-middle py-1 pl-1 border-dark"><%= @order.total_payment.to_s(:delimited) %></td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="col-md-9">
+    <h5 class="ml-1 font-weight-bold">注文内容</h5>
+    <table class="table table-bordered">
+      <thead class="table-active">
+        <th class="border-dark" style="width:50%;">商品</th>
+        <th class="border-dark" style="width:20%;">単価（税込）</th>
+        <th class="border-dark" style="width:15%;">個数</th>
+        <th class="border-dark" style="width:15%;">小計</th>
+      </thead>
+      <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td class="align-middle border-dark"><%= order_detail.item.name %></td>
+            <td class="align-middle border-dark"><%= order_detail.price.to_s(:delimited) %></td>
+            <td class="align-middle border-dark"><%= order_detail.amount %></td>
+            <td class="align-middle border-dark"><%= (order_detail.price*order_detail.amount).to_s(:delimited) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
