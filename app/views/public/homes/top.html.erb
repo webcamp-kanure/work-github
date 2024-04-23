@@ -1,13 +1,11 @@
-<div class="container pb-5">
-  <div class="row p-4">
-
     <div class="col-md-3">
       <%= render 'public/shared/left_sidebar', genres: @genres %>
     </div>
 
     <div class="col-md-9">
       <!--仮の画像を挿入中　center-block存在しないため適用不可-->
-      <div class="row p-2 center-block" style="width: 80%; height: 60%; background-image: url('<%= asset_path('cloth.jpg') %>'); background-size: cover; background-position: center;">
+    
+      <div class="row p-2" style="width: 80%; background-image: url('<%= asset_path('cloth.jpg') %>'); background-size: cover; background-position: center;">
         <div class="col-md-10 offset-md-1 d-flex align-items-center justify-content-center">
           <div class="row m-5 bg-light border border-3 border-dark">
             <div class="text-left py-4">
@@ -19,9 +17,11 @@
           </div>
         </div>
       </div>
-
-      <div class="p-2">
-        <h1>新着商品</h1>
+      
+      <div class="clearfix"></div>
+      
+      <div class="row p-2">
+        <h2>新着商品</h2>
       </div>
       <div class="row p-2">
         <% @items.first(4).each do |item| %>
@@ -37,11 +37,8 @@
         <% end %>
       </div>
 
-      <div class="pt-2 pb-5 text-right">
+      <div class="p-2 text-right">
         <%= link_to "全ての商品を見る>", items_path %>
       </div>
-
+    
     </div>
-
-  </div>
-</div>
