@@ -1,33 +1,43 @@
+<script src="https://kit.fontawesome.com/200d44628f.js" crossorigin="anonymous"></script>
+
+
 <div class="container mt-4">
   <div class="row">
-    <div class="col-lg-9"> 
-      <h2>商品一覧</h4>
+    <div class="col-lg-9 offset-lg-1"> 
+      <h4 style="background-color:#ddd; text-align:center; width:180px;">商品一覧</h4>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <div class="text-right">
-        <%= link_to "新規登録", new_admin_item_path, class: "btn btn-lg btn-primary" %>
+        <%= link_to new_admin_item_path, class: "btn btn-lg " do %>
+        <i class="fa-solid fa-circle-plus fa-2xl"></i>
+        <% end %>
       </div>
     </div>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item) %></td>
-        <td><%= item.price %></td>
-        <td><%= item.genre.name %></td>
-        <td><% if item.is_active == true %>販売中
-            <% else %>販売停止中<% end %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <table class=table  style="border-bottom: 1px solid black;">
+
+        <thead style="background-color: #ddd;"> 
+          <tr>
+            <th class="border-dark" style="width:13%;">商品ID</th>
+            <th class="border-dark" style="width:37%;">商品名</th>
+            <th class="border-dark" style="width:10%;">税抜価格</th>
+            <th class="border-dark" style="width:20%;">ジャンル</th>
+            <th class="border-dark" style="width:20%;">ステータス</th>
+          </tr>
+        </thead>
+        <% @items.each do |item| %>
+          <tr style="height:60px; padding:0;">
+            <td class="align-middle border-dark py-1"><%= item.id %></td>
+            <td class="align-middle border-dark py-1"><%= link_to item.name, admin_item_path(item) %></td>
+            <td class="align-middle border-dark py-1"><%= item.price %></td>
+            <td class="align-middle border-dark py-1"><%= item.genre.name %></td>
+            <td class="align-middle border-dark py-1"><% if item.is_active == true %>販売中
+                <% else %>販売停止中<% end %></td>
+          </tr>
+        <% end %>
+      </table>
+   </div>
+  </div>

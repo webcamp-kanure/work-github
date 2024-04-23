@@ -1,93 +1,93 @@
-    <div class="col-lg-11 offset-lg-1 pb-2">
-      <h4 style="background-color:#eee; text-align:center; width:180px;">注文情報確認</h4>
-    </div>
 
+<div class="col-lg-11 offset-lg-1 pb-2">
+  <h4 style="background-color:#eee; text-align:center; width:180px;">注文情報確認</h4>
+</div>
 
-    <div class="col-lg-8">
-      <table class="table table-bordered">
-        <tr class="table-active">
-          <th class="bg-gray-light">商品名</th>
-          <th class="bg-gray-light">単価(税込)</th>
-          <th class="bg-gray-light">数量</th>
-          <th class="bg-gray-light">小計</th>
+<div class="row">
+  <div class="col-lg-8">
+    <table class="table table-bordered">
+      <tr class="table-active">
+        <th class="bg-gray-light">商品名</th>
+        <th class="bg-gray-light">単価(税込)</th>
+        <th class="bg-gray-light">数量</th>
+        <th class="bg-gray-light">小計</th>
+      </tr>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= image_tag cart_item.item.get_image, size: "100x80" %>
+            <strong><%= cart_item.item.name %></strong>
+          </td>
+          <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%= cart_item.item.price*cart_item.amount %></td>
         </tr>
-        <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td>
-              <%= image_tag cart_item.item.get_image, size: "100x80" %>
-              <strong><%= cart_item.item.name %></strong>
-            </td>
-            <td><%= cart_item.item.price %></td>
-            <td><%= cart_item.amount %></td>
-            <td><%= cart_item.item.price*cart_item.amount %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-
-    <div class="col-lg-4">
-      <table class="table table-bordered">
-        <tr class="table-active">
-          <th class="bg-gray-light" style="width:50%;">送料</th>
-          <th class="bg-white" style="width:50%;"><%= @shipping_cost %></th>
-        </tr>
-        <tr class="table-active">
-          <td class="bg-gray-light">商品合計</td>
-          <td class="bg-white"><%= @cart_items_price %></td>
-        </tr>
-        <tr class="table-active">
-          <td class="bg-gray-light">請求額</td>
-          <td class="bg-white"><%= @total_payment %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="row" style="margin-top:30px;">
-    <div class="col-lg-2">
-      <h5><strong>支払方法</strong></h5>
-    </div>
-
-    <div class="col-lg-6">
-      <% if @selected_payment_method == "クレジットカード" %>
-        クレジットカード
-      <% else %>
-        銀行振込
       <% end %>
-    </div>
-    <div class="col-lg-4"></div>
+    </table>
   </div>
 
-  <div class="row" style="margin-top:25px;">
-    <div class="col-lg-2">
-      <h5><strong>お届け先</strong></h5>
-    </div>
+  <div class="col-lg-4">
+    <table class="table table-bordered">
+      <tr class="table-active">
+        <th class="bg-gray-light" style="width:50%;">送料</th>
+        <th class="bg-white" style="width:50%;"><%= @shipping_cost %></th>
+      </tr>
+      <tr class="table-active">
+        <td class="bg-gray-light">商品合計</td>
+        <td class="bg-white"><%= @cart_items_price %></td>
+      </tr>
+      <tr class="table-active">
+        <td class="bg-gray-light">請求額</td>
+        <td class="bg-white"><%= @total_payment %></td>
+      </tr>
+    </table>
+  </div>
+</div>
 
-    <div class="col-lg-6">
-      <p><%= @selected_address %></br>
-        <%= @selected_name %>
-      </p>
-    </div>
-    <div class="col-lg-4"></div>
+<div class="row" style="margin-top:30px;">
+  <div class="col-lg-2">
+    <h5><strong>支払方法</strong></h5>
   </div>
 
-  <div="row d-flex justify-content-center align-items-center" style="margin-top:60px;">
-    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-      <%= f.hidden_field :customer_id, :value => current_customer.id %>
-      <%= f.hidden_field :total_payment, :value => @total_payment %>
-      <%= f.hidden_field :shipping_cost, :value => @shipping_cost %>
-      <%= f.hidden_field :payment_method, :value => @selected_payment_method %>
-      <%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
-      <%= f.hidden_field :address, :value => current_customer.address %>
-      <%= f.hidden_field :name, :value => current_customer.last_name + " " + current_customer.first_name %>
-
-      <% if @selected_payment_method == "クレジットカード" %>
-        <%= f.hidden_field :status, :value => "入金確認" %>
-      <% else %>
-        <%= f.hidden_field :status, :value => "入金待ち" %>
-      <% end %>
-      <div class="btn-group btn-group-lg" style="padding-left:475px; margin:30px auto 175px;">
-        <%= submit_tag "注文を確定する", class: "btn btn-success" %>
-      </div>
+  <div class="col-lg-6">
+    <% if @selected_payment_method == "クレジットカード" %>
+      クレジットカード
+    <% else %>
+      銀行振込
     <% end %>
   </div>
+  <div class="col-lg-4"></div>
+</div>
+
+<div class="row" style="margin-top:25px;">
+  <div class="col-lg-2">
+    <h5><strong>お届け先</strong></h5>
+  </div>
+  <div class="col-lg-6">
+    <p><%= @selected_address %></br>
+      <%= @selected_name %>
+    </p>
+  </div>
+  <div class="col-lg-4"></div>
+</div>
+
+<div="row justify-content-center align-items-center" style="margin-top:60px;">
+  <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= f.hidden_field :total_payment, :value => @total_payment %>
+    <%= f.hidden_field :shipping_cost, :value => @shipping_cost %>
+    <%= f.hidden_field :payment_method, :value => @selected_payment_method %>
+    <%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
+    <%= f.hidden_field :address, :value => current_customer.address %>
+    <%= f.hidden_field :name, :value => current_customer.last_name + " " + current_customer.first_name %>
+
+    <% if @selected_payment_method == "クレジットカード" %>
+      <%= f.hidden_field :status, :value => "入金確認" %>
+    <% else %>
+      <%= f.hidden_field :status, :value => "入金待ち" %>
+    <% end %>
+    <div class="btn-group btn-group-lg" style="padding-left:475px; margin:30px auto 175px;">
+      <%= submit_tag "注文を確定する", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>

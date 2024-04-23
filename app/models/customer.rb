@@ -4,7 +4,6 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
@@ -18,6 +17,8 @@ class Customer < ApplicationRecord
     validates :address
     validates :telephone_number
     validates :email
-    validates :password
   end
+
+  validates :password, presence: true, on: :update!
+
 end

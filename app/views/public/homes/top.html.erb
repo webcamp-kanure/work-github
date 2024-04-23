@@ -1,3 +1,4 @@
+  <div class="row">
     <div class="col-md-3">
       <%= render 'public/shared/left_sidebar', genres: @genres %>
     </div>
@@ -18,14 +19,12 @@
         </div>
       </div>
       
-      <div class="clearfix"></div>
-      
       <div class="row p-2">
         <h2>新着商品</h2>
       </div>
       <div class="row p-2">
         <% @items.first(4).each do |item| %>
-          <div class="col-3 p-1 ">
+          <div class="col-3 p-1">
             <div class="text-center", style="height: 140px;">
               <%= link_to item_path(item.id) do %>
                 <%= image_tag(item.get_image, class: "img-fluid", style: "max-height: 140px; width: auto;") %></br>
@@ -37,8 +36,9 @@
         <% end %>
       </div>
 
-      <div class="p-2 text-right">
+      <div class="row p-2 text-right">
         <%= link_to "全ての商品を見る>", items_path %>
       </div>
     
     </div>
+</div>

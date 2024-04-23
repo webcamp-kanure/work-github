@@ -1,96 +1,94 @@
-<div class="container">
-  <div class="row mt-4">
-    <div class="col-lg-10 offset-lg-2">
-      <h4 style="background-color:#eee; text-align:center; width:180px;">会員情報編集</h4>
+<div class="row">
+  <div class="col-lg-11 offset-lg-1">
+    <h4 class="px-3" style="background-color:#eee; text-align:center; width:fit-content;">会員情報編集</h4>
+  </div>
+</div>
+
+<%= form_for @customer, url: customers_information_path, method: :patch do |f| %>
+  <%= render "public/shared/error_messages", resource: @customer %>
+
+  <!-- 余白 -->
+  <div class="my-4"></div>
+
+  <!-- 名前 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :名前 %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :last_name, "(姓)   ", class: "mr-3" %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :first_name, "(名)   ", class: "mr-3" %>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
     </div>
   </div>
 
-  <%= form_for @customer, url: customers_information_edit_path, method: :patch do |f| %>
-    <%= render "public/shared/error_messages", resource: @customer %>
-
-    <!-- Create some vertical space -->
-    <div class="my-4"></div>
-
-    <!-- 名前 -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :名前 %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.label :last_name, "(姓)   ", class: "mr-3" %>
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.label :first_name, "(名)   ", class: "mr-3" %>
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-      </div>
+  <!-- フリガナ -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :フリガナ %>
     </div>
-
-    <!-- フリガナ -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :フリガナ %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.label :last_name_kana, "(セイ)" %>
-        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.label :first_name_kana, "(メイ)" %>
-        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
-      </div>
+    <div class="col-lg-3">
+      <%= f.label :last_name_kana, "(セイ)" %>
+      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
     </div>
-
-    <!-- 郵便番号 -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :'郵便番号（ハイフンなし）' %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-      </div>
+    <div class="col-lg-3">
+      <%= f.label :first_name_kana, "(メイ)" %>
+      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
     </div>
+  </div>
 
-    <!-- 住所 -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :住所 %>
-      </div>
-      <div class="col-lg-6">
-        <%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>"60"%>
-      </div>
+  <!-- 郵便番号 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :'郵便番号（ハイフンなし）' %>
     </div>
-
-    <!-- 電話番号 -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :電話番号（ハイフンなし） %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
-      </div>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
     </div>
+  </div>
 
-    <!-- メールアドレス -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :メールアドレス %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+  <!-- 住所 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :住所 %>
     </div>
-
-    <!-- Submit Button -->
-    <div class="row mt-2">
-      <div class="col-lg-4 offset-lg-4">
-        <%= f.submit "変更内容を保存", class: "btn btn-success" %>
-      </div>
-      <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger float-end" %>
+    <div class="col-lg-6">
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>"60"%>
     </div>
+  </div>
 
-    <!-- 余白 -->
-    <div style="height:225px;"></div>
+  <!-- 電話番号 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :電話番号（ハイフンなし） %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+    </div>
+  </div>
 
-  <% end %>
-</div>
+  <!-- メールアドレス -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :メールアドレス %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="row mt-2">
+    <div class="col-lg-4 offset-lg-4">
+      <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+    </div>
+    <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger float-end" %>
+  </div>
+
+  <!-- 余白 -->
+  <div style="height:225px;"></div>
+
+<% end %>
