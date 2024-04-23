@@ -1,26 +1,30 @@
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-lg-9">
-      <h2>会員一覧</h2>
-    </div>
 
-    </div>
+<div class="row">
+  <div class="col-lg-10 pb-2">
+    <h2 class="px-3" style="background-color:#eee; text-align:center; width:fit-content;">会員一覧</h2>
+  </div>
+</div>
 
+<div class="col-lg-10 offset-1">
   <table class="table">
-    <thead>
+    <thead class="table-active">
       <tr>
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
+        <th style="width:15%;">会員ID</th>
+        <th style="width:25%;">氏名</th>
+        <th style="width:35%;">メールアドレス</th>
+        <th style="width:25%;">ステータス</th>
       </tr>
     </thead>
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.id %></td>
-        <td><%= link_to "#{customer.last_name} #{customer.first_name}", admin_customer_path(customer.id) %></td>
+        <td><%= link_to "#{customer.last_name}#{customer.first_name}", admin_customer_path(customer.id) %></td>
         <td><%= customer.email %></td>
-        <td><% if customer.is_active? %>有効<% else %>退会<% end %></td>
+        <% if customer.is_active? %>
+          <td><strong class="text-success">有効</strong></td>
+        <% else %>
+          <td><strong class="text-muted">退会</strong></td>
+        <% end %>
       </tr>
     <% end %>
   </table>

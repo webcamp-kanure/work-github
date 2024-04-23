@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-
-<div class="col-lg-11 offset-lg-1 pb-2">
-  <h4 style="background-color:#eee; text-align:center; width:180px;">注文情報確認</h4>
+<div class="row">
+  <div class="col-lg-11 offset-lg-1 pb-2">
+    <h4 style="background-color:#eee; text-align:center; width:180px;">注文情報確認</h4>
+  </div>
 </div>
 
 <div class="row">
@@ -19,25 +19,9 @@
             <%= image_tag cart_item.item.get_image, size: "100x80" %>
             <strong><%= cart_item.item.name %></strong>
           </td>
-          <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.item.price.to_s(:delimited) %></td>
           <td><%= cart_item.amount %></td>
-          <td><%= cart_item.item.price*cart_item.amount %></td>
-=======
-  <div class="row mt-4">
-    <div class="col-lg-11 offset-lg-1 pb-2">
-      <h4 style="background-color:#eee; text-align:center; width:180px;">注文情報確認</h4>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-8">
-      <table class="table table-bordered">
-        <tr class="table-active">
-          <th class="bg-gray-light">商品名</th>
-          <th class="bg-gray-light">単価(税込)</th>
-          <th class="bg-gray-light">数量</th>
-          <th class="bg-gray-light">小計</th>
->>>>>>> origin/develop
+          <td><%= (cart_item.item.price*cart_item.amount).to_s(:delimited) %></td>
         </tr>
       <% end %>
     </table>
@@ -47,15 +31,15 @@
     <table class="table table-bordered">
       <tr class="table-active">
         <th class="bg-gray-light" style="width:50%;">送料</th>
-        <th class="bg-white" style="width:50%;"><%= @shipping_cost %></th>
+        <th class="bg-white" style="width:50%;"><%= @shipping_cost.to_s(:delimited) %></th>
       </tr>
       <tr class="table-active">
         <td class="bg-gray-light">商品合計</td>
-        <td class="bg-white"><%= @cart_items_price %></td>
+        <td class="bg-white"><%= @cart_items_price.to_s(:delimited) %></td>
       </tr>
       <tr class="table-active">
         <td class="bg-gray-light">請求額</td>
-        <td class="bg-white"><%= @total_payment %></td>
+        <td class="bg-white"><%= @total_payment.to_s(:delimited) %></td>
       </tr>
     </table>
   </div>
