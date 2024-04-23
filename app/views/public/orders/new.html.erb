@@ -4,7 +4,7 @@
 
 <div class="w-100">
   <%= form_for @order, url: "/orders/confirm", method: :post do |f| %>
-    
+
       <h5><strong>支払方法</strong></h5>
       <div style="padding-left:30px">
         <p>
@@ -21,7 +21,7 @@
         <%= current_customer.address %><br>
         <%= current_customer.last_name %><%= current_customer.first_name %>
       </div>
-      
+
     <div class="row justify-content-center mt-5">
       <div class="btn-group btn-group-lg">
         <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
