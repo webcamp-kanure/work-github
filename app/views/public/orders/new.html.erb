@@ -6,6 +6,7 @@
 
 
 <%= form_for @order, url: "/orders/confirm", method: :post do |f| %>
+<%= render "public/shared/error_messages", resource: @order %>
 
   <div class="row">
     <div class="col-lg-3">
@@ -67,6 +68,16 @@
       <%= f.label :shipping_address, "新しいお届け先" %>
     </div>
   </div>
+
+  <% flash.each do |error, value| %>
+    <div class="row mt-3">
+      <div class="col-lg-8 offset-lg-4 mb-2">
+        <div class="flash <%= error %>" style="color: #b57">
+          <%= value %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <!-- 郵便番号 -->
   <div class="row">

@@ -37,15 +37,20 @@ class Public::OrdersController < ApplicationController
         @selected_address = selected.address
         @selected_name = selected.name
       else
-        redirect_to new_order_path
+        @registered_addresses = Address.where(customer_id: current_customer.id)
+        render :new
       end
     when 2
-      unless params[:order][:new_postal_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
+      if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+        flash[:error] = "入力項目を全て入力してください。"
+        redirect_to new_order_path
+      elsif params[:order][:postal_code] !~ /^\d+$/ || params[:order][:postal_code].length != 7
+        flash[:error] = "郵便番号は7文字の半角数字で入力してください。"
+        redirect_to new_order_path
+      else
         @selected_postal_code = params[:order][:postal_code]
         @selected_address =  params[:order][:address]
         @selected_name = params[:order][:name]
-      else
-        redirect_to new_order_path
       end
     end
   end
@@ -71,7 +76,7 @@ class Public::OrdersController < ApplicationController
       end
       redirect_to thanks_order_path
     else
-      @order = Order.new
+      @registered_addresses = Address.where(customer_id: current_customer.id)
       render :new
     end
   end
