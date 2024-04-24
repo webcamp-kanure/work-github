@@ -65,7 +65,7 @@
     <h5><strong>お届け先</strong></h5>
   </div>
   <div class="col-lg-6">
-    <p><%= @selected_address %></br>
+    <p>〒<%= @selected_postal_code %> <%= @selected_address %></br>
       <%= @selected_name %>
     </p>
   </div>
@@ -78,9 +78,9 @@
     <%= f.hidden_field :total_payment, :value => @total_payment %>
     <%= f.hidden_field :shipping_cost, :value => @shipping_cost %>
     <%= f.hidden_field :payment_method, :value => @selected_payment_method %>
-    <%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
-    <%= f.hidden_field :address, :value => current_customer.address %>
-    <%= f.hidden_field :name, :value => current_customer.last_name + " " + current_customer.first_name %>
+    <%= f.hidden_field :postal_code, :value => @selected_postal_code %>
+    <%= f.hidden_field :address, :value => @selected_address %>
+    <%= f.hidden_field :name, :value => @selected_name %>
 
     <% if @selected_payment_method == "クレジットカード" %>
       <%= f.hidden_field :status, :value => "入金確認" %>

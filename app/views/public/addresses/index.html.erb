@@ -48,12 +48,11 @@
 <div class="my-5"></div>
 
 <div class="row">
-  <div class="col-lg-8">
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="width:70%">
       <tr class="table-active">
-        <th class="bg-gray-light" style="width:10%">郵便番号</th>
-        <th class="bg-gray-light" style="width:43.25%">住所</th>
-        <th class="bg-gray-light" style="width:20%">宛名</th>
+        <th class="bg-gray-light" style="width:15%">郵便番号</th>
+        <th class="bg-gray-light" style="width:38%">住所</th>
+        <th class="bg-gray-light" style="width:17%">宛名</th>
         <th class="bg-gray-light" style="width:30%"></th>
       </tr>
       <% @addresses.each do |shipping_address| %>
@@ -61,13 +60,12 @@
           <td><%= shipping_address.postal_code %></td>
           <td><%= shipping_address.address %></td>
           <td><%= shipping_address.name %></td>
-          <td class="btn-group btn-group-sm">
+          <td style="width:30%">
             <%= link_to "編集する", edit_address_path(shipping_address.id), class: "btn btn-success" %>　<%= link_to "削除する", address_path(shipping_address.id), method: :delete, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>
     </table>
-  </div>
 </div>
 
 <!-- 余白 -->
