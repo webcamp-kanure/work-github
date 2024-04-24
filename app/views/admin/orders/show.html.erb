@@ -1,4 +1,3 @@
-<div class="container mt-4">
   <div class="row">
     <div class="col-lg-12">
       <h2>注文履歴詳細</h2>
@@ -42,9 +41,9 @@
           <% @sum += order_detail.item.with_tax_price * order_detail.amount %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.item.with_tax_price %>円</td>
+            <td><%= (order_detail.item.with_tax_price).to_s(:delimited) %>円</td>
             <td><%= order_detail.amount %></td>
-            <td><%= order_detail.item.with_tax_price * order_detail.amount %>円</td>
+            <td><%= (order_detail.item.with_tax_price * order_detail.amount).to_s(:delimited) %>円</td>
           </tr>
         <% end %>
       </table>
@@ -55,18 +54,17 @@
         <tbody>
           <tr>
             <td>商品合計</td>
-            <td><%= @sum %>円</td>
+            <td><%= @sum.to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <td>送料</td>
-            <td><%= @order.shipping_cost %>円</td>
+            <td><%= @order.shipping_cost.to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <td>請求金額合計</td>
-            <td><%= @sum + @order.shipping_cost %>円</td>
+            <td><%= (@sum + @order.shipping_cost).to_s(:delimited) %>円</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-</div>
