@@ -20,5 +20,7 @@ class Customer < ApplicationRecord
   end
 
   validates :password, presence: true, on: :update!
+  validates :postal_code, length: { is: 7 }, numericality: { only_integer: true }
+  validates :telephone_number, length: { in: 10..11 }, numericality: { only_integer: true }
 
 end
