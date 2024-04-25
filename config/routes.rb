@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "search" => "searches#search", as: "search"
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -42,7 +44,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
     resources :genres, only: [:index,:create,:edit,:update]
     resources :customers, only: [:index,:show,:edit,:update]
-    get '/orders/:id' => 'orders#customer_search', as: "orders_search"
+    get '/orders/search/:id' => 'orders#customer_search', as: "orders_search"
     resources :orders, only: [:index,:show,:update]
     resources :order_details, only: [:update]
   end
