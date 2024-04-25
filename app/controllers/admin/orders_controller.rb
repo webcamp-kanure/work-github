@@ -22,8 +22,9 @@ class Admin::OrdersController < ApplicationController
   end
 
   def customer_search
-    @customer_id = params[:id]
-    orders = Order.where(customer_id: @customer_id)
+    customer_id = params[:id]
+    @customer = Customer.find(params[:id])
+    orders = Order.where(customer_id: customer_id)
     @orders = orders.page(params[:page]).per(10)
     render :index
   end
