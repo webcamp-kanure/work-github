@@ -23,4 +23,18 @@ class Customer < ApplicationRecord
   validates :postal_code, length: { is: 7 }, numericality: { only_integer: true }
   validates :telephone_number, length: { in: 10..11 }, numericality: { only_integer: true }
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @customer = Customer.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @customer = Customer.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @customer = Customer.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @customer = Customer.where("name LIKE?","%#{word}%")
+    else
+      @customer = Customer.all
+    end
+  end
+  
 end
