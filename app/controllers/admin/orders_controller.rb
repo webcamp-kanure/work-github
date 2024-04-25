@@ -5,12 +5,12 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.page(params[:page]).per(10)
   end
 
-def show
-  @order = Order.find(params[:id])
-  @order_details = @order.order_details
-  @customer = @order.customer
-  # @item = @order.details
-end
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @customer = @order.customer
+    # @item = @order.details
+  end
 
   def update
     order = Order.find(params[:id])
@@ -19,6 +19,13 @@ end
     end
       @order = order
       render :show
+  end
+
+  def customer_search
+    @customer_id = params[:id]
+    orders = Order.where(customer_id: @customer_id)
+    @orders = orders.page(params[:page]).per(10)
+    render template: "admin/orders/index"
   end
 
 end
