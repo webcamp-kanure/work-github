@@ -25,7 +25,7 @@ class Admin::OrdersController < ApplicationController
     @customer_id = params[:id]
     orders = Order.where(customer_id: @customer_id)
     @orders = orders.page(params[:page]).per(10)
-    render template: "admin/orders/index"
+    render :index
   end
 
 end
