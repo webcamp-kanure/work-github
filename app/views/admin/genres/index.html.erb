@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-9">
-    <h3>ジャンル一覧・追加</h3>
+    <h3 class="px-3" style="background-color:#eee; width:fit-content;">ジャンル一覧・追加</h3>
   </div>
 </div>
 
 <!-- ジャンル新規登録 -->
 <div class="row mt-4">
-  
+
     <%= form_with(model: [:admin, @genre], local: true) do |form| %>
     <div class="col-lg-12">
       <div class="d-flex align-items-center">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <% end %>
-  
+
 </div>
 
 <!-- ジャンル一覧 -->
