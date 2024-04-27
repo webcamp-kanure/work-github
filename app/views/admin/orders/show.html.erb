@@ -1,11 +1,11 @@
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-12">
       <h2>注文履歴詳細</h2>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-8">
       <table class="table">
         <tbody>
           <tr>
@@ -24,16 +24,25 @@
             <td>支払方法</td>
             <td><%= @order.payment_method %></td>
           </tr>
+          <tr>
+            <td>注文ステータス</td>
+            <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+              <td><%= f.select :status,Order.statuses.keys.map %></td>
+              <td><%= f.submit '更新', class:"btn btn-success" %></td>
+            <% end %>
+          </tr>
         </tbody>
       </table>
 
       <table class="table">
-        <thead>
+        <thead class="table-active">
           <tr>
-            <th>商品名</th>
+            <th class=>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
+            <th>注文ステータス</th>
+            <th></th>
           </tr>
         </thead>
         <% @sum = 0 %>
@@ -44,25 +53,29 @@
             <td><%= (order_detail.item.with_tax_price).to_s(:delimited) %>円</td>
             <td><%= order_detail.amount %></td>
             <td><%= (order_detail.item.with_tax_price * order_detail.amount).to_s(:delimited) %>円</td>
+            <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+              <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map  %></td>
+              <td><%= f.submit '更新', class:"btn btn-success"  %></td>
+            <% end %>
           </tr>
         <% end %>
       </table>
     </div>
 
-    <div class="col-lg-3 d-flex align-items-end justify-content-end">
+    <div class="col-4 d-flex align-items-end justify-content-end">
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td>商品合計</td>
+            <td class="w-auto"><strong>商品合計</strong></td>
             <td><%= @sum.to_s(:delimited) %>円</td>
           </tr>
           <tr>
-            <td>送料</td>
+            <td class="w-auto"><strong>送料</strong></td>
             <td><%= @order.shipping_cost.to_s(:delimited) %>円</td>
           </tr>
           <tr>
-            <td>請求金額合計</td>
-            <td><%= (@sum + @order.shipping_cost).to_s(:delimited) %>円</td>
+            <td class="w-auto"><strong>請求金額合計</strong></td>
+            <td><strong><%= (@sum + @order.shipping_cost).to_s(:delimited) %>円</strong></td>
           </tr>
         </tbody>
       </table>

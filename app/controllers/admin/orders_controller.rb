@@ -9,7 +9,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @customer = @order.customer
-    # @item = @order.details
+    # @item = @order_details
   end
 
   def update
@@ -18,6 +18,8 @@ class Admin::OrdersController < ApplicationController
       flash[:notice] = "注文ステータスを変更しました。"
     end
       @order = order
+      @order_details = @order.order_details
+      @customer = @order.customer
       render :show
   end
 
@@ -27,5 +29,12 @@ class Admin::OrdersController < ApplicationController
     @orders = orders.page(params[:page]).per(10)
     render :index
   end
-
+  
+  private
+  
+  def order_params
+    params.require(:order).permit(:status)
+  end
+  
+  
 end
