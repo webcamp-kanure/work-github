@@ -30,9 +30,9 @@ class Public::CartItemsController < ApplicationController
   def destroy
     cart_item = current_customer.cart_items.find(params[:id])
     if cart_item.destroy
-      flash[:notice] = 'カート内の商品が削除されました'
+
     else
-      flash[:alert] = '削除に失敗しました'
+
     end
     redirect_back(fallback_location: root_path)
   end

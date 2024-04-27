@@ -99,7 +99,6 @@ class Public::OrdersController < ApplicationController
 
   def check_cart
     unless CartItem.find_by(customer_id: current_customer.id)
-      flash[:danger] = "カートに商品がありません"
       redirect_to root_path
     end
   end
