@@ -3,14 +3,14 @@
     <%= render 'public/shared/left_sidebar', genres: @genres %>
   </div>
   <div class="col-md-9">
-    <h2>
+    <h3 class="px-3" style="background-color:#eee; width:fit-content;">
     <% if @genre_id == nil %>
       商品一覧<small>(全<%= @items_count %>件)</small>
     <% else %>
       <%= @genre.name %>一覧<small>(全<%= @items.count %>件)</small>
     <% end %>
-    </h2>
-    <div class="row">
+    </h3>
+    <div class="row mt-4">
       <% @items.each do |item| %>
         <div class="col-md-3 p-2">
           <div class="text-center", style= "height: 150px;">

@@ -1,11 +1,11 @@
   <div class="row mb-4">
     <div class="col-11 offset-1">
-      <h4 style="background-color:#eee; text-align:center; width:180px;">ログイン</h4>
+      <h3 class="px-3" style="background-color:#eee; width:fit-content;">ログイン</h3>
     </div>
   </div>
 
   <div class="col-11 offset-1 pl-4">
-    <h5 style="background-color:#eee; text-align:center; width:330px;">会員の方はこちらからログイン</h5>
+    <h4 class="px-3" style="background-color:#eee; width:fit-content;">会員の方はこちらからログイン</h4>
 　</div>
 
 　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -35,9 +35,9 @@
     </div>
   <% end %>
 
-  <div class="col-lg-9 offset-lg-2 pt-4 pl-4">
-    <h5 style="background-color:#eee; text-align:center; width:280px;">会員登録がお済みでない方</h5>
+  <div class="col-lg-9 offset-lg-1 pt-4">
+    <h5 class="px-3" style="background-color:#eee; width:fit-content;">会員登録がお済みでない方</h5>
 　</div>
-  <div class="col-lg-6 offset-lg-3 pl-5" style="margin-bottom:200px;">
+  <div class="col-lg-6 offset-lg-2 pl-3" style="margin-bottom:200px;">
       <%= link_to "こちら", new_registration_path(resource_name) %>　から新規登録を行ってください。
   </div>
