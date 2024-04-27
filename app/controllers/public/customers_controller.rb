@@ -12,7 +12,6 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      flash[:notice] = "会員情報を変更しました。"
       render :show
     else
       render :edit
