@@ -24,12 +24,11 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :genre_id
     validates :name
-    validates :price
   end
+  validates :price, presence: true, numericality: { only_integer: true }
 
   def self.looks(search, word)
       @item = Item.where("name LIKE?","%#{word}%")
   end
 
-  validates :price, numericality: { only_integer: true }
 end
