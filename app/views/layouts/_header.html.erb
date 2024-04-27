@@ -1,44 +1,94 @@
 <header class="vw-100 border-bottom border-dark align-items-center" style="min-height:125px">
-  <nav class="navbar navbar-expand-lg navbar-light w-100">
-      <a class="navbar-brand" href="/"><%= image_tag('naganocafe.png', style: "max-height: 100px; width: auto;") %></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <div style="background-color:#5b503e;">
+    <nav class="navbar navbar-expand-lg navbar-light w-100">
+        <a class="navbar-brand" href="/"><%= image_tag('naganocafe.png', style: "max-height: 100px; width: auto;") %></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse items-right" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <!--customersヘッダー-->
-          <div class="items-left mt-2 mr-5">
-          <% if current_customer %>
-            ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん!
-          <% else %>
+        <div class="collapse navbar-collapse items-right" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <!--customersヘッダー-->
+            <div class="items-left mt-2 mr-5" style="color:white;">
+            <% if current_customer %>
+              ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！
+            <% else %>
 
-          <% end %>
-          </div>
+            <% end %>
+            </div>
 
-          <% if customer_signed_in? %>
-            <li class="nav-item"><%= link_to 'マイページ', customers_my_page_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to '商品一覧', items_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to 'カート', cart_items_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary mr-3" %></li>
-          <!--adminヘッダー-->
-          <% elsif admin_signed_in? %>
-            <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mr-3" %></li>
-          <% else %>
-            <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to '商品一覧', items_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path, class: "btn btn-outline-secondary mr-3" %></li>
-            <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path, class: "btn btn-outline-secondary mr-3" %></li>
-          <% end %>
-        </ul>
-      </div>
-  </nav>
-  <div class="d-flex justify-content-end mb-3 mr-4">
-    <%= render 'searches/search' %>
+            <% if customer_signed_in? %>
+              <li class="nav-item">
+                <%= link_to customers_my_page_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-regular fa-user"></i> マイページ
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to items_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-cake-candles"></i> 商品
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to cart_items_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-cart-shopping"></i> カート
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i> ログアウト
+                <% end %>
+              </li>
+            <!--adminヘッダー-->
+            <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to admin_items_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-cake-candles"></i> 商品
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to admin_customers_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-users"></i> 会員
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to admin_orders_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-sheet-plastic"></i> 注文履歴
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to admin_genres_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-cookie-bite"></i> ジャンル
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i> ログアウト
+                <% end %>
+              </li>
+            <% else %>
+              <li class="nav-item"><%= link_to 'About', about_path, class: "btn btn-outline-light mr-3" %></li>
+              <li class="nav-item">
+                <%= link_to items_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-cake-candles"></i> 商品
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_customer_registration_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-regular fa-address-card"></i> 新規登録
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_customer_session_path, class: "btn btn-outline-light mr-3" do %>
+                  <i class="fa-solid fa-arrow-right-to-bracket"></i> ログイン
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+    </nav>
+    <div class="d-flex justify-content-end pb-3 pr-4">
+      <%= render 'searches/search' %>
+    </div>
   </div>
 </header>

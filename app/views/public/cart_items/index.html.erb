@@ -1,38 +1,38 @@
 <div class="min-h-100">
 <div class="row pb-3">
-  <h4 class="px-4 ml-2" style="background-color:#eee;">ショッピングカート</h4>
+  <h3 class="px-3" style="background-color:#eee; width:fit-content;">ショッピングカート</h3>
   <div class="col text-right">
     <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" %>
   </div>
 </div>
 
 <div class="row">
-  <table class="table table-bordered">
-    <tr class="table-active">
-        <th>商品名</th>
-        <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th><br></th>
+  <table class="table table-bordered pl-1">
+    <tr class="table-active border-dark">
+        <th class="border-dark">商品名</th>
+        <th class="border-dark">単価(税込)</th>
+        <th class="border-dark">数量</th>
+        <th class="border-dark">小計</th>
+        <th class="border-dark"><br></th>
     </tr>
     <% @sum = 0 %>
     <% @cart_items.each do |cart_item| %>
         <tr>
-          <td>
+          <td class="bg-white border-dark">
               <%= image_tag cart_item.item.get_image, size:'130x80' %>
               <%= cart_item.item.name %>
           </td>
-          <td>
+          <td class="bg-white border-dark">
               <%= cart_item.item.with_tax_price.to_s(:delimited) %>
           </td>
-          <td>
+          <td class="bg-white border-dark">
               <%= form_with model:cart_item, url:cart_item_path(cart_item.id) , local:true do |f| %>
                 <%= f.select :amount, *[1..10] %>
                 <%= f.submit "変更" , class: "btn btn-success" %>
               <% end %>
           </td>
-          <td><%= cart_item.subtotal.to_s(:delimited) %></td>
-          <td><%= link_to "削除", cart_item_path(cart_item.id) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger"%></td>
+          <td class="bg-white border-dark"><%= cart_item.subtotal.to_s(:delimited) %></td>
+          <td class="bg-white border-dark"><%= link_to "削除", cart_item_path(cart_item.id) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger"%></td>
         </tr>
         <% @sum += cart_item.subtotal %>
     <% end %>

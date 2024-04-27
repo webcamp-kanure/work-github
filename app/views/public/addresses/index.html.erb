@@ -1,6 +1,6 @@
 <div class="row mt-4">
-  <div class="col-lg-11 offset-lg-1 pl-4">
-    <h4 class="px-3" style="background-color:#eee; text-align:center; width:fit-content;">配送先登録/一覧</h4>
+  <div class="col-lg-11">
+    <h3 class="px-3" style="background-color:#eee; text-align:center; width:fit-content;">配送先登録/一覧</h3>
   </div>
 </div>
 
@@ -50,17 +50,17 @@
 <div class="row">
     <table class="table table-bordered" style="width:70%">
       <tr class="table-active">
-        <th class="bg-gray-light" style="width:15%">郵便番号</th>
-        <th class="bg-gray-light" style="width:38%">住所</th>
-        <th class="bg-gray-light" style="width:17%">宛名</th>
-        <th class="bg-gray-light" style="width:30%"></th>
+        <th class="bg-gray-light border-dark" style="width:15%">郵便番号</th>
+        <th class="bg-gray-light border-dark" style="width:38%">住所</th>
+        <th class="bg-gray-light border-dark" style="width:17%">宛名</th>
+        <th class="bg-gray-light border-dark" style="width:30%"></th>
       </tr>
       <% @addresses.each do |shipping_address| %>
         <tr>
-          <td><%= shipping_address.postal_code %></td>
-          <td><%= shipping_address.address %></td>
-          <td><%= shipping_address.name %></td>
-          <td style="width:30%">
+          <td class="border-dark"><%= shipping_address.postal_code %></td>
+          <td class="border-dark"><%= shipping_address.address %></td>
+          <td class="border-dark"><%= shipping_address.name %></td>
+          <td class="border-dark" style="width:30%">
             <%= link_to "編集する", edit_address_path(shipping_address.id), class: "btn btn-success" %>　<%= link_to "削除する", address_path(shipping_address.id), method: :delete, class: "btn btn-danger" %>
           </td>
         </tr>

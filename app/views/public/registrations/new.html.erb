@@ -1,6 +1,6 @@
   <div class="row mb-4">
     <div class="col-lg-10 offset-lg-2">
-      <h4 style="background-color:#eee; text-align:center; width:180px;">新規会員登録</h4>
+      <h3 class="px-3" style="background-color:#eee; width:fit-content;">新規会員登録</h3>
     </div>
   </div>
 
@@ -115,12 +115,12 @@
     <div class="my-4"></div>
 
     <!-- 既に登録済みの方 -->
-    <div class="row">
+    <div class="row mt-5">
       <div class="col-lg-6 offset-lg-1 pl-5">
-        <h4 style="background-color:#ddd; text-align:center; width:240px;">既に登録済みの方</h4>
+        <h4 class="px-3" style="background-color:#eee; width:fit-content;">既に登録済みの方</h4>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-2 mb-5">
       <div class="col-lg-6 offset-lg-2">
         <% if controller_name != 'sessions' %>
           <%= link_to "こちら", new_session_path(resource_name) %>
