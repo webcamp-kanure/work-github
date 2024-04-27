@@ -11,7 +11,7 @@ class Order < ApplicationRecord
     validates :name
   end
 
-  validates :postal_code, length: { is: 7 }, numericality: { only_integer: true }
+  validates :postal_code, presence: true, length: { is: 7 }, numericality: { only_integer: true }
 
 
   enum status: {

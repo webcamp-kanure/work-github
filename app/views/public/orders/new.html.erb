@@ -1,9 +1,6 @@
-<div class="row">
-  <div class="col-lg-11 offset-lg-1 pb-2 pl-5">
-    <h4 style="background-color:#eee; text-align:center; width:180px;">注文情報入力</h4>
-  </div>
+<div class="row m-0 p-0 mb-3">
+  <h2 class="px-4">注文情報入力</h2>
 </div>
-
 
 <%= form_for @order, url: "/orders/confirm", method: :post do |f| %>
 <%= render "public/shared/error_messages", resource: @order %>
@@ -69,15 +66,6 @@
     </div>
   </div>
 
-  <% flash.each do |error, value| %>
-    <div class="row mt-3">
-      <div class="col-lg-8 offset-lg-4 mb-2">
-        <div class="flash <%= error %>" style="color: #b57">
-          <%= value %>
-        </div>
-      </div>
-    </div>
-  <% end %>
 
   <!-- 郵便番号 -->
   <div class="row">

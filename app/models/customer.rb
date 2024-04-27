@@ -13,15 +13,13 @@ class Customer < ApplicationRecord
     validates :first_name
     validates :last_name_kana
     validates :first_name_kana
-    validates :postal_code
     validates :address
-    validates :telephone_number
     validates :email
   end
 
   validates :password, presence: true, on: :update!
-  validates :postal_code, length: { is: 7 }, numericality: { only_integer: true }
-  validates :telephone_number, length: { in: 10..11 }, numericality: { only_integer: true }
+  validates :postal_code, presence: true, length: { is: 7 }, numericality: { only_integer: true }
+  validates :telephone_number, presence: true, length: { in: 10..11 }, numericality: { only_integer: true }
 
   def self.looks(search, word)
       @customer = Customer.where("CONCAT(last_name, first_name) LIKE?","%#{word}%")

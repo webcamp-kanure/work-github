@@ -1,43 +1,41 @@
-  <div class="row mb-4">
-    <div class="col-11 offset-1">
-      <h4 style="background-color:#eee; text-align:center; width:180px;">ログイン</h4>
-    </div>
-  </div>
+<div class="row m-0 p-0 mb-3">
+  <h2 class="px-4">ログイン</h2>
+</div>
 
-  <div class="col-11 offset-1 pl-4">
-    <h5 style="background-color:#eee; text-align:center; width:330px;">会員の方はこちらからログイン</h5>
-　</div>
+<div class="col pl-4 ml-4 mb-4">
+  <h5 style="background-color:#eee; text-align:center; width:330px;">会員の方はこちらからログイン</h5>
+</div>
 
-　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 　<%= render "public/shared/error_messages", resource: resource %>
-    <div class="row mb-3">
-      <div class="col-lg-2 offset-lg-3">
-        <%= f.label "メールアドレス" %>
-      </div>
-      <div class="col-lg-5">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+  <div class="row mb-3">
+    <div class="col-2 offset-lg-3">
+      <%= f.label "メールアドレス" %>
     </div>
-
-     <div class="row mb-3">
-      <div class="col-lg-2 offset-lg-3">
-        <%= f.label "パスワード" %>
-      </div>
-      <div class="col-lg-5">
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
+    <div class="col-5">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
-
-    <div class="row">
-      <div class="col-lg-3 offset-lg-5">
-        <%= f.submit "ログイン", class:"btn btn-primary px-4 mt-3 mb-5" %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="col-lg-9 offset-lg-2 pt-4 pl-4">
-    <h5 style="background-color:#eee; text-align:center; width:280px;">会員登録がお済みでない方</h5>
-　</div>
-  <div class="col-lg-6 offset-lg-3 pl-5" style="margin-bottom:200px;">
-      <%= link_to "こちら", new_registration_path(resource_name) %>　から新規登録を行ってください。
   </div>
+
+   <div class="row mb-3">
+    <div class="col-2 offset-lg-3">
+      <%= f.label "パスワード" %>
+    </div>
+    <div class="col-5">
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 offset-lg-5">
+      <%= f.submit "ログイン", class:"btn btn-primary px-4 mt-3 mb-5" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="col-9 py-3 pl-4 ml-4">
+  <h5 style="background-color:#eee; text-align:center; width:280px;">会員登録がお済みでない方</h5>
+</div>
+<div class="col-6 offset-lg-3 pl-5" style="margin-bottom:200px;">
+    <%= link_to "こちら", new_registration_path(resource_name) %>　から新規登録を行ってください。
+</div>

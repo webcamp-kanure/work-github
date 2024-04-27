@@ -1,14 +1,14 @@
-<div class="row">
-  <div class="col-lg-10 offset-lg-1 pb-2 text-center">
-    <h3 class="px-3" style="background-color:#eee; width:fit-content;">
-      <% if @customer == nil %>
-        注文履歴一覧
-      <% else %>
-        <%= @customer.last_name %><%= @customer.first_name %>さんの注文履歴一覧
-      <% end %>
-    </h3>
-  </div>
+<div class="row m-0 p-0 mb-3">
+  <h2 class="px-4">
+    <% if @customer == nil %>
+      注文履歴一覧
+    <% else %>
+      <%= @customer.last_name %><%= @customer.first_name %>さんの注文履歴一覧
+    <% end %>
+  </h2>
 </div>
+
+
 
   <table class="table">
     <thead class="table-active">

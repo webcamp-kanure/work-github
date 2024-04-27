@@ -6,9 +6,7 @@ class Admin::OrderDetailsController < ApplicationController
     if @order_detail.update(order_detail_params)
       flash[:notice] = "製作ステータスを変更しました。"
     end
-      @order = Order.find(params[:id])
-      @customer = @order.customer
-      redirect_to admin_order_path(@order_detail.order)
+    redirect_to admin_order_path(@order_detail.order_id)
   end
 
   private

@@ -18,7 +18,7 @@
     </div>
     <div>
       <p style="font-size:14px;">
-        <span style="font-size:28px;">￥<%= @item.with_tax_price %></span>
+        <span style="font-size:28px;">￥<%= @item.with_tax_price.to_s(:delimited) %></span>
       （税込）
       </p>
     </div>

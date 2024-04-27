@@ -1,8 +1,7 @@
-<div class="row">
-  <div class="col-lg-11 offset-lg-1">
-    <h4 class="px-3" style="background-color:#eee; text-align:center; width:fit-content;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
-  </div>
+<div class="row m-0 p-0 mb-3">
+  <h2 class="px-4"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
 </div>
+
 
 <%= form_for(@customer, as: :customer, url: admin_customer_path(@customer)) do |f| %>
   <%= render "admin/shared/error_messages", resource: @customer%>

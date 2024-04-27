@@ -1,26 +1,30 @@
-<div class="min-h-100">
-<div class="row pb-3">
-  <h4 class="px-4 ml-2" style="background-color:#eee;">ショッピングカート</h4>
-  <div class="col text-right">
-    <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" %>
-  </div>
+<div class="row m-0 p-0 mb-3">
+  <h2 class="px-4">ショッピングカート</h2>
+</div>
+
+<div class="col text-right mb-3">
+  <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" %>
 </div>
 
 <div class="row">
-  <table class="table table-bordered">
+  <table class="table table-bordered" style="border: none;">
     <tr class="table-active">
-        <th>商品名</th>
-        <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th><br></th>
+        <th style="width:40%;">商品名</th>
+        <th style="width:15%;">単価(税込)</th>
+        <th style="width:15%;">数量</th>
+        <th style="width:15%;">小計</th>
+        <th style="width:15%;"><br></th>
     </tr>
     <% @sum = 0 %>
     <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
-              <%= image_tag cart_item.item.get_image, size:'130x80' %>
-              <%= cart_item.item.name %>
+            <div colspan="2">
+              <div style="display: flex;">
+                <div class="col-4"><%= image_tag cart_item.item.get_image, class: "img-fluid", style: "max-height: 130px; width: auto;" %></div>
+                <div class="col-8"><%= cart_item.item.name %></div>
+              </div>
+            </div>
           </td>
           <td>
               <%= cart_item.item.with_tax_price.to_s(:delimited) %>
@@ -39,27 +43,25 @@
   </table>
 </div>
 
-
-  <div class="row align-items-center">
-    <div class="col">
-      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
-    </div>
-    <div class="col">
-      <table class="table-bordered float-right"style="width:250px;height:60px;">
-          <tr class="table-active my-3">
-            <th class="border-dark w-50">合計金額</th>
-            <td class="bg-white border-dark"><%= @sum.to_s(:delimited) %></td>
-          </tr>
-      </table>
-    </div>
+<div class="row align-items-center">
+  <div class="col">
+    <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
   </div>
-
-
-  <div class="row justify-content-center my-5">
-      <div class="btn-group btn-group-lg">
-        <% if @cart_items.any? %>
-            <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
-        <% end %>
-      </div>
+  <div class="col">
+    <table class="table-bordered float-right"style="width:250px;height:60px;">
+        <tr class="table-active my-3">
+          <th class="border-dark w-50">合計金額</th>
+          <td class="bg-white border-dark"><%= @sum.to_s(:delimited) %></td>
+        </tr>
+    </table>
   </div>
+</div>
+
+
+<div class="row justify-content-center my-5">
+    <div class="btn-group btn-group-lg">
+      <% if @cart_items.any? %>
+          <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+      <% end %>
+    </div>
 </div>

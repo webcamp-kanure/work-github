@@ -1,131 +1,132 @@
-  <div class="row mb-4">
-    <div class="col-lg-10 offset-lg-2">
-      <h4 style="background-color:#eee; text-align:center; width:180px;">新規会員登録</h4>
+<div class="row m-0 p-0 mb-3">
+  <h2 class="px-4">新規会員登録</h2>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
+  <!-- Create some vertical space -->
+  <div class="my-4"></div>
+
+  <!-- 名前 -->
+  <div class="row">
+    <div class="col-2 offset-lg-1 mb-2">
+      <%= f.label :名前 %>
+    </div>
+    <div class="col-1 text-right">
+      <%= f.label :last_name, "(姓)", class: "mr-3" %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :last_name, autofocus: true, class: "w-100", autocomplete: "last_name" %>
+    </div>
+    <div class="col-1 text-right">
+      <%= f.label :first_name, "(名)", class: "mr-3" %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :first_name, autofocus: true, class: "w-100", autocomplete: "first_name" %>
     </div>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
-
-    <!-- Create some vertical space -->
-    <div class="my-4"></div>
-
-    <!-- 名前 -->
-    <div class="row">
-      <div class="col-lg-2 offset-lg-1 mb-2">
-        <%= f.label :名前 %>
-      </div>
-      <div class="col-lg-1 text-right">
-        <%= f.label :last_name, "(姓)", class: "mr-3" %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.label :first_name, "(名)   ", class: "mr-3" %>
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-      </div>
+  <!-- フリガナ -->
+  <div class="row">
+    <div class="col-2 offset-lg-1 mb-2">
+      <%= f.label :フリガナ %>
     </div>
-
-    <!-- フリガナ -->
-    <div class="row">
-      <div class="col-lg-2 offset-lg-1 mb-2">
-        <%= f.label :フリガナ %>
-      </div>
-      <div class="col-lg-1 text-right">
-        <%= f.label :last_name_kana, "(セイ)" %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.label :first_name_kana, "(メイ)" %>
-        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
-      </div>
+    <div class="col-1 text-right">
+      <%= f.label :last_name_kana, "(セイ)" %>
     </div>
-
-    <!-- メールアドレス -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :メールアドレス %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+    <div class="col-3">
+      <%= f.text_field :last_name_kana, autofocus: true, class: "w-100", autocomplete: "last_name_kana" %>
     </div>
-
-    <!-- 郵便番号 -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :'郵便番号（ハイフンなし）' %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-      </div>
+    <div class="col-1 text-right">
+      <%= f.label :first_name_kana, "(メイ)" %>
     </div>
-
-    <!-- 住所 -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :住所 %>
-      </div>
-      <div class="col-lg-6">
-        <%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>"60"%>
-      </div>
+    <div class="col-3">
+      <%= f.text_field :first_name_kana, autofocus: true, class: "w-100", autocomplete: "first_name_kana" %>
     </div>
+  </div>
 
-    <!-- 電話番号 -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :電話番号（ハイフンなし） %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
-      </div>
+  <!-- メールアドレス -->
+  <div class="row">
+    <div class="col-3 offset-lg-1 mb-2">
+      <%= f.label :メールアドレス %>
     </div>
-
-    <!-- パスワード -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-2">
-        <%= f.label :パスワード（6文字以上） %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.password_field :password, autocomplete: "new-password", class: "password" %>
-      </div>
+    <div class="col-3">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
+  </div>
 
-    <!-- パスワード（確認用） -->
-    <div class="row">
-      <div class="col-lg-3 offset-lg-1 mb-4">
-        <%= f.label :パスワード（確認用） %>
-      </div>
-      <div class="col-lg-3">
-        <%= f.password_field :password_confirmation, autocomplete: "password_confirmation", class: "password_confirm" %>
-      </div>
+  <!-- 郵便番号 -->
+  <div class="row">
+    <div class="col-3 offset-lg-1 mb-2">
+      <%= f.label :'郵便番号（ハイフンなし）' %>
     </div>
-
-    <!-- Submit Button -->
-    <div class="row">
-      <div class="col-lg-6 offset-lg-4">
-        <%= f.submit "新規登録", class: "btn btn-success float-end px-5" %>
-      </div>
+    <div class="col-3">
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
     </div>
+  </div>
 
-    <!-- 余白 -->
-    <div class="my-4"></div>
-
-    <!-- 既に登録済みの方 -->
-    <div class="row">
-      <div class="col-lg-6 offset-lg-1 pl-5">
-        <h4 style="background-color:#ddd; text-align:center; width:240px;">既に登録済みの方</h4>
-      </div>
+  <!-- 住所 -->
+  <div class="row">
+    <div class="col-3 offset-lg-1 mb-2">
+      <%= f.label :住所 %>
     </div>
-    <div class="row">
-      <div class="col-lg-6 offset-lg-2">
-        <% if controller_name != 'sessions' %>
-          <%= link_to "こちら", new_session_path(resource_name) %>
-        <% end %>　からログインしてください。
-      </div>
+    <div class="col-6">
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>"60"%>
     </div>
-  <% end %>
+  </div>
 
+  <!-- 電話番号 -->
+  <div class="row">
+    <div class="col-3 offset-lg-1 mb-2">
+      <%= f.label :電話番号（ハイフンなし） %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+    </div>
+  </div>
+
+  <!-- パスワード -->
+  <div class="row">
+    <div class="col-3 offset-lg-1 mb-2">
+      <%= f.label :パスワード（6文字以上） %>
+    </div>
+    <div class="col-3">
+      <%= f.password_field :password, autocomplete: "new-password", class: "password" %>
+    </div>
+  </div>
+
+  <!-- パスワード（確認用） -->
+  <div class="row">
+    <div class="col-3 offset-lg-1 mb-4">
+      <%= f.label :パスワード（確認用） %>
+    </div>
+    <div class="col-3">
+      <%= f.password_field :password_confirmation, autocomplete: "password_confirmation", class: "password_confirm" %>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="row">
+    <div class="col-6 offset-lg-4">
+      <%= f.submit "新規登録", class: "btn btn-success float-end px-5" %>
+    </div>
+  </div>
+
+  <!-- 余白 -->
+  <div class="my-4"></div>
+
+  <!-- 既に登録済みの方 -->
+  <div class="row">
+    <div class="col-6 offset-lg-1 pl-5">
+      <h4 style="background-color:#ddd; text-align:center; width:240px;">既に登録済みの方</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-lg-2">
+      <% if controller_name != 'sessions' %>
+        <%= link_to "こちら", new_session_path(resource_name) %>
+      <% end %>　からログインしてください。
+    </div>
+  </div>
+<% end %>

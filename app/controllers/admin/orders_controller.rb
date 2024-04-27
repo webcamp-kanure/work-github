@@ -13,14 +13,13 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    order = Order.find(params[:id])
-    if order.update(order_params)
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
       flash[:notice] = "注文ステータスを変更しました。"
     end
-      @order = order
-      @order_details = @order.order_details
-      @customer = @order.customer
-      render :show
+    @order_details = @order.order_details
+    @customer = @order.customer
+    render 'admin/orders/show'
   end
 
   def customer_search
@@ -30,12 +29,12 @@ class Admin::OrdersController < ApplicationController
     @orders = orders.page(params[:page]).per(10)
     render :index
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:status)
   end
-  
-  
+
+
 end
