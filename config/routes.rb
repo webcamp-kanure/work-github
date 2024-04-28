@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get 'orders/thanks' => 'orders#thanks', as: "thanks_order"
     resources :orders, only: [:new,:create,:index,:show]
     post 'orders/confirm' => 'orders#confirm'
+    
 
 
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
