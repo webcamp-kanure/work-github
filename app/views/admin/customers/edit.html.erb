@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-lg-11 offset-lg-1">
+    <h3 class="px-3" style="background-color:#eee; text-align:center; width:fit-content;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+  </div>
+</div>
+
+<%= form_for(@customer, as: :customer, url: admin_customer_path(@customer)) do |f| %>
+  <%= render "admin/shared/error_messages", resource: @customer%>
+
+  <!-- 余白 -->
+  <div class="my-4"></div>
+
+  <!-- 会員ID -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      会員ID
+    </div>
+    <div class="col-lg-3">
+      <%= @customer.id %>
+    </div>
+  </div>
+
+  <!-- 名前 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :名前 %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :last_name, "(姓)   ", class: "mr-3" %>
+      <%= f.text_field :last_name, autocomplete: "last_name" %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :first_name, "(名)   ", class: "mr-3" %>
+      <%= f.text_field :first_name, autocomplete: "first_name" %>
+    </div>
+  </div>
+
+  <!-- フリガナ -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :フリガナ %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :last_name_kana, "(セイ)" %>
+      <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.label :first_name_kana, "(メイ)" %>
+      <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+    </div>
+  </div>
+
+  <!-- 郵便番号 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :'郵便番号（ハイフンなし）' %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code, autocomplete: "postal_code" %>
+    </div>
+  </div>
+
+  <!-- 住所 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :住所 %>
+    </div>
+    <div class="col-lg-6">
+      <%= f.text_field :address, autocomplete: "address", :size=>"60"%>
+    </div>
+  </div>
+
+  <!-- 電話番号 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :電話番号（ハイフンなし） %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :telephone_number, autocomplete: "telephone_number" %>
+    </div>
+  </div>
+
+  <!-- メールアドレス -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :メールアドレス %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+  </div>
+
+  <!-- 会員ステータスの選択 -->
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 mb-2">
+      <%= f.label :is_active, "会員ステータス" %>
+    </div>
+    <div class="col-lg-3" style="color:#666;">
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :is_active, true, id: "active", class: "form-check-input" %>
+        <%= f.label :is_active_true, "有効", class: "form-check-label", for: "active", style: "border-bottom:1px solid #666;" %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :is_active, false, id: "inactive", class: "form-check-input" %>
+        <%= f.label :is_active_false, "退会", class: "form-check-label", for: "inactive", style: "border-bottom:1px solid #666;" %>
+      </div>
+    </div>
+  </div>
+
+  <!--余白-->
+  <div class="my-4"
+
+  <!-- Submit Button -->
+  <div class="row mt-2">
+    <div class="col-lg-4 offset-lg-4">
+      <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <!-- 余白 -->
+  <div style="height:125px;"></div>
+
+<% end %>

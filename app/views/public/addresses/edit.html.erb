@@ -1,0 +1,48 @@
+<div class="row mt-4">
+  <div class="col-lg-11">
+    <h3 class="px-3" style="background-color:#eee; text-align:center; width:fit-content;">配送先編集</h3>
+  </div>
+</div>
+
+<%= form_for @address, url: address_path,method: :patch do |f| %>
+  <%= render "public/shared/error_messages", resource: @address %>
+
+  <!-- 余白 -->
+  <div class="my-4"></div>
+
+  <!-- 郵便番号 -->
+  <div class="row">
+    <div class="col-lg-3 pl-5 mb-2">
+      <%= f.label :'郵便番号（ハイフンなし）' %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+    </div>
+  </div>
+
+  <!-- 住所 -->
+  <div class="row">
+    <div class="col-lg-3 pl-5 mb-2">
+      <%= f.label :住所 %>
+    </div>
+    <div class="col-lg-6">
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>"60"%>
+    </div>
+  </div>
+
+  <!-- 宛名 -->
+  <div class="row">
+    <div class="col-lg-3 pl-5 mb-2">
+      <%= f.label :宛名 %>
+    </div>
+    <div class="col-lg-5">
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+    <div class="col-lg-2">
+      <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+
+<!--余白-->
+<div class="my-5 py-5"></div>

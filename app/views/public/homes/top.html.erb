@@ -1,0 +1,44 @@
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/shared/left_sidebar', genres: @genres %>
+    </div>
+
+    <div class="col-md-9">
+      <!--仮の画像を挿入中　center-block存在しないため適用不可-->
+
+      <div class="row p-2" style="height: 400px; max-width: 650px; background-image: url('<%= asset_path('cake.jpeg') %>'); background-size: cover; background-position: center;">
+        <div class="col-md-10 offset-md-1 d-flex align-items-center justify-content-center">
+          <div class="row m-5 bg-light border border-3 border-dark">
+            <div class="text-left py-4">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row p-2 mt-3">
+        <h2 class="px-3" style="background-color:#eee; width:fit-content;">新着商品</h2>
+      </div>
+      <div class="row p-2">
+        <% @items.first(4).each do |item| %>
+          <div class="col-3 p-1">
+            <div class="text-center", style="height: 140px;">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag(item.get_image, class: "img-fluid", style: "max-height: 140px; width: auto;") %></br>
+              <% end %>
+            </div>
+            <%= link_to item.name, item_path(item.id) %></br>
+            ¥<%= p item.price.to_s(:delimited) %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row p-2 justify-content-end">
+        <%= link_to "全ての商品を見る>", items_path %>
+      </div>
+
+    </div>
+</div>
